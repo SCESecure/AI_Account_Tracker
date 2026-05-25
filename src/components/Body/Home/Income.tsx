@@ -1,7 +1,16 @@
 export default function Income() {
+  /*
+    수입 백분율 = (이번달 전체 수입 - 지난달 전체 수입) / 100
+  */
   return (
     <>
-      <h3>Hello, Income Component!</h3>
+      <div>
+        <p>총 수입</p>
+        {/* 여기는 리스트에서 가져와야 함 */}
+        <p>(전체 수입)원</p>
+        <p>(수입 백분율)%</p>
+        <p>지난달 대비</p>
+      </div>
     </>
   );
 }
