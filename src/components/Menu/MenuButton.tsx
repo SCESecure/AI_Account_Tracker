@@ -1,6 +1,3 @@
-import { useState } from "react";
-import type { ScreenStatus } from "../../App";
-
 export default function MenuButton({
   screenHandler,
 }: {
