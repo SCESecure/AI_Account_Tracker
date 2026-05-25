@@ -1,9 +1,13 @@
 import MenuButton from "./MenuButton";
 
-export default function Menu() {
+export default function Menu({
+  screenHandler,
+}: {
+  screenHandler: (targetScreen: string) => void;
+}) {
   return (
     <>
-      <MenuButton />
+      <MenuButton screenHandler={screenHandler} />
     </>
   );
 }
