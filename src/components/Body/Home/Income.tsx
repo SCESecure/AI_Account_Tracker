@@ -1,16 +1,15 @@
+import { homeSummary, money } from "./homeData";
+
 export default function Income() {
-  /*
-    수입 백분율 = (이번달 전체 수입 - 지난달 전체 수입) / 100
-  */
   return (
-    <>
-      <div>
-        <p>총 수입</p>
-        {/* 여기는 리스트에서 가져와야 함 */}
-        <p>(전체 수입)원</p>
-        <p>(수입 백분율)%</p>
-        <p>지난달 대비</p>
-      </div>
-    </>
+    <article className="summary-card income-card">
+      <p className="summary-title">월 수입</p>
+
+      <strong>{money(homeSummary.totalIncome)}</strong>
+
+      <p className="summary-rate up">▲ {homeSummary.incomeRate}%</p>
+
+      <p className="summary-caption">지난달 대비</p>
+    </article>
   );
 }
