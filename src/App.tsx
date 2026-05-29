@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import Body from "./components/Body/Body";
 import Menu from "./components/Menu/Menu";
+
 import { useState } from "react";
 
 // 현재 어떤 화면을 렌더링할지를 나타내주는 interface

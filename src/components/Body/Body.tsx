@@ -9,8 +9,6 @@ import Stat from "./Stat/Stat";
 export default function Body({ screen }: { screen: ScreenStatus }) {
   return (
     <>
-      <h1>Hello, Body Component!</h1>
-
       {screen.isHome && <Home />}
       {screen.isList && <List />}
       {screen.isInput && <Input />}
