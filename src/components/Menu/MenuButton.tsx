@@ -1,30 +1,15 @@
-interface MenuButtonProps {
-  label: string;
-
-  icon: string;
-
-  target: string;
-
-  active: boolean;
-  
-  screenHandler: (targetScreen: string) => void;
-}
-
 export default function MenuButton({
-  label,
-  icon,
-  target,
-  active,
   screenHandler,
-}: MenuButtonProps) {
+}: {
+  screenHandler: (targetScreen: string) => void;
+}) {
   return (
-    <button
-      type="button"
-      className={`menu-button ${active ? "active" : ""}`}
-      onClick={() => screenHandler(target)}
-    >
-      <img src={icon} alt={label} />
-      <span>{label}</span>
-    </button>
+    <>
+      <button onClick={() => screenHandler("Home")}>홈</button>
+      <button onClick={() => screenHandler("List")}>리스트</button>
+      <button onClick={() => screenHandler("Input")}>입력</button>
+      <button onClick={() => screenHandler("Stat")}>통계</button>
+      <button onClick={() => screenHandler("AI")}>AI 분석</button>
+    </>
   );
 }

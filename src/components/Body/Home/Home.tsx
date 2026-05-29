@@ -5,15 +5,13 @@ import Total from "./Total";
 
 export default function Home() {
   return (
-    <section className="home-page">
+    <>
+      <h2>Hello, Home Component!</h2>
+
       <Total />
-
-      <div className="summary-grid">
-        <Income />
-        <Expense />
-      </div>
-
+      <Income />
+      <Expense />
       <FiveList />
-    </section>
+    </>
   );
 }
