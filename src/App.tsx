@@ -64,7 +64,7 @@ export default function App() {
   return (
     <>
       <Header screen={screen} />
-      <Body />
+      <Body screen={screen} />
       <Menu screenHandler={screenHandler} />
     </>
   );
