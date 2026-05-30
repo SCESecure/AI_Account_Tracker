@@ -5,10 +5,8 @@ interface ListItemTypes extends List {
 }
 
 export default function ListItem({
-  id,
   month,
   day,
-  compareDay,
   category,
   isExpense,
   price,
