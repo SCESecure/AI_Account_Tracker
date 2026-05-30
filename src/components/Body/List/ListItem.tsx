@@ -6,14 +6,18 @@ interface ListItemTypes extends List {
 
 export default function ListItem({
   id,
-  date,
+  month,
+  day,
+  compareDay,
   category,
   isExpense,
   price,
 }: ListItemTypes) {
   return (
     <>
-      <p>{date}</p>
+      <p>
+        {month}월 {day}일
+      </p>
       <p>{category}</p>
       <p>{isExpense ? "(지출)" + price : "(수입)" + price}</p>
     </>

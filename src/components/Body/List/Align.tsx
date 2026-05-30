@@ -1,9 +1,9 @@
 export default function Align({
   tyear,
   tmonth,
+  tdate,
   order,
   isAscend,
-  tdate,
   orderHandler,
   isAscendHandler,
   dateMinusHandler,
