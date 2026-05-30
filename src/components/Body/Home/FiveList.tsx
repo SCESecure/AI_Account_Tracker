@@ -1,27 +1,24 @@
-export default function FiveList() {
+import type { List } from "../Body";
+
+export default function FiveList({ top5list }: { top5list: List[] }) {
+  const result = [];
+
+  for (let i = 0; i < 5; i++) {
+    result.push(
+      <li key={top5list[i].id}>
+        <li>{top5list[i].category}</li>
+        <ul typeof="circle">
+          <li>{top5list[i].month + "월 " + top5list[i].day + "일"}</li>
+          <li>{top5list[i].price + "원"}</li>
+        </ul>
+      </li>,
+    );
+  }
+
   return (
     <>
       <h3>Hello, FiveList Component!</h3>
-      <div>
-        <p>(리스트 1)</p>
-        <p>(날짜 1)</p>
-        <p>(값 1)</p>
-      </div>
-      <div>
-        <p>(리스트 2)</p>
-        <p>(날짜 2)</p>
-        <p>(값 2)</p>
-      </div>
-      <div>
-        <p>(리스트 3)</p>
-        <p>(날짜 3)</p>
-        <p>(값 3)</p>
-      </div>
-      <div>
-        <p>(리스트 4)</p>
-        <p>(날짜 4)</p>
-        <p>(값 4)</p>
-      </div>
+      <ul>{result}</ul>
     </>
   );
 }

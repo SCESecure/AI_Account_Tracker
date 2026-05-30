@@ -1,4 +1,4 @@
-import type { List } from "./List";
+import type { List } from "../Body";
 
 interface ListItemTypes extends List {
   key: string;

@@ -1,12 +1,11 @@
 import { useState } from "react";
+
+import type { List } from "../Body";
+
 import Align from "./Align";
 import AllList from "./AllList";
 
-
-
-
-
-export default function List() {
+export default function List({ defaultList }: { defaultList: List[] }) {
   const tdate = new Date();
 
   const [list, setList] = useState<List[]>(defaultList);

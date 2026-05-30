@@ -82,10 +82,13 @@ export default function Body({ screen }: { screen: ScreenStatus }) {
     },
   ];
 
+  // 이건 내림차순 버전 5개만 보여주는 리스트
+  const top5list: List[] = defaultList.sort((a, b) => b.price - a.price);
+
   return (
     <>
-      {screen.isHome && <Home />}
-      {screen.isList && <List />}
+      {screen.isHome && <Home top5list={top5list} />}
+      {screen.isList && <List defaultList={defaultList} />}
       {screen.isInput && <Input />}
       {screen.isStat && <Stat />}
       {screen.isAI && <AI />}

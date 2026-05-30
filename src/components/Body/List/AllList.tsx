@@ -1,4 +1,4 @@
-import type { List } from "./List";
+import type { List } from "../Body";
 import ListItem from "./ListItem";
 
 export default function AllList({ dateSearched }: { dateSearched: List[] }) {
