@@ -4,6 +4,8 @@ export default function Align() {
   const date = new Date();
   const [year, setYear] = useState<number>(date.getFullYear());
   const [month, setMonth] = useState<number>(date.getMonth() + 1);
+  const [order, setOrder] = useState<string>("recentOrder");
+  const [isAscend, setIsAscend] = useState<boolean>(false);
 
   const dateMinusHandler = (): void => {
     if (month <= 1) {
@@ -23,6 +25,22 @@ export default function Align() {
     setMonth(month + 1);
     return;
   };
+  const orderHandler = (): void => {
+    if (order === "recentOrder") {
+      setOrder("oldOrder");
+      return;
+    }
+    setOrder("recentOrder");
+  };
+
+  const isAscendHandler = (): void => {
+    if (isAscend) {
+      setIsAscend(false);
+      return;
+    }
+    setIsAscend(true);
+    return;
+  };
 
   return (
     <>
@@ -40,8 +58,12 @@ export default function Align() {
         (오른쪽 화살표)
       </button>
 
-      <button>최신순</button>
-      <button>(오름차순)</button>
+      <button onClick={orderHandler}>
+        {order === "recentOrder" ? "최신순" : "오래된순"}
+      </button>
+      <button onClick={isAscendHandler}>
+        {isAscend ? "(오름차순)" : "(내림차순)"}
+      </button>
     </>
   );
 }
