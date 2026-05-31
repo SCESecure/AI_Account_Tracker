@@ -40,8 +40,8 @@ export default function Income({ descList }: { descList: List[] }) {
       <div>
         <p>총 수입</p>
         {/* 여기는 리스트에서 가져와야 함 */}
-        <p>{thisMonthTotal}원</p>
-        <p>{incomePercent}%</p>
+        <p>{thisMonthTotal - lastMonthTotal}원</p>
+        <p>{Math.round(incomePercent * 100) / 100}%</p>
         <p>지난달 대비</p>
       </div>
     </>
