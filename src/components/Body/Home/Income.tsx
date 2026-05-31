@@ -2,6 +2,7 @@ export default function Income() {
   /*
     수입 백분율 = (이번달 전체 수입 - 지난달 전체 수입) / 100
   */
+<<<<<<< HEAD
 
   const monthlyIncome = 2050000;
   const incomeRate = 12.5;
@@ -17,5 +18,17 @@ export default function Income() {
 
       <p className="summary-caption">지난달 대비</p>
     </article>
+=======
+  return (
+    <>
+      <div>
+        <p>총 수입</p>
+        {/* 여기는 리스트에서 가져와야 함 */}
+        <p>(전체 수입)원</p>
+        <p>(수입 백분율)%</p>
+        <p>지난달 대비</p>
+      </div>
+    </>
+>>>>>>> 416c18c328f931915f3a7924781587a1bae2c165
   );
 }

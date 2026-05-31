@@ -63,12 +63,7 @@ export default function App() {
 
   return (
     <div className="app-shell">
-      <div hidden>
-        <Header screen={screen} />
-      </div>
-
       <Body screen={screen} />
-
       <Menu screen={screen} screenHandler={screenHandler} />
     </div>
   );

@@ -2,6 +2,7 @@ export default function Expense() {
   /*
     지출 백분율 = (이번달 전체 지출 - 지난달 전체 지출) / 100
   */
+<<<<<<< HEAD
 
   const monthlyExpense = 750000;
   const expenseRate = 8.3;
@@ -17,5 +18,17 @@ export default function Expense() {
 
       <p className="summary-caption">지난달 대비</p>
     </article>
+=======
+  return (
+    <>
+      <div>
+        <p>총 지출</p>
+        {/* 여기는 리스트에서 가져와야 함 */}
+        <p>(전체 지출)원</p>
+        <p>(지출 백분율)%</p>
+        <p>지난달 대비</p>
+      </div>
+    </>
+>>>>>>> 416c18c328f931915f3a7924781587a1bae2c165
   );
 }
