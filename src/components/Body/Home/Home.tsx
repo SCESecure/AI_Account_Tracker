@@ -4,15 +4,16 @@ import FiveList from "./FiveList";
 import Income from "./Income";
 import Total from "./Total";
 
-export default function Home({ top5list }: { top5list: List[] }) {
+export default function Home({ descList }: { descList: List[] }) {
+
   return (
     <>
       <h2>Hello, Home Component!</h2>
 
       <Total />
-      <Income />
-      <Expense />
-      <FiveList top5list={top5list} />
+      <Income descList={descList}/>
+      <Expense descList={descList} />
+      <FiveList top5list={descList} />
     </>
   );
 }

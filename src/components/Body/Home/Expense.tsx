@@ -1,4 +1,6 @@
-export default function Expense() {
+import type { List } from "../Body";
+
+export default function Expense({ descList }: { descList: List[] }) {
   /*
     지출 백분율 = (이번달 전체 지출 - 지난달 전체 지출) / 100
   */

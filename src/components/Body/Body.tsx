@@ -32,9 +32,9 @@ export default function Body({ screen }: { screen: ScreenStatus }) {
   const defaultList: List[] = [
     {
       id: uuidv4(),
-      year: year,
-      month: month,
-      day: day,
+      year: 2026,
+      month: 5,
+      day: 31,
       compareDay: month * 30 + day,
       category: "급여",
       isExpense: false,
@@ -42,9 +42,9 @@ export default function Body({ screen }: { screen: ScreenStatus }) {
     },
     {
       id: uuidv4(),
-      year: year,
-      month: month,
-      day: day,
+      year: 2026,
+      month: 4,
+      day: 5,
       compareDay: month * 30 + day,
       category: "용돈",
       isExpense: false,
@@ -52,42 +52,42 @@ export default function Body({ screen }: { screen: ScreenStatus }) {
     },
     {
       id: uuidv4(),
-      year: year,
-      month: month,
-      day: day,
+      year: 2026,
+      month: 5,
+      day: 28,
       compareDay: month * 30 + day,
       category: "식비",
       isExpense: true,
-      price: 15000,
+      price: -15000,
     },
     {
       id: uuidv4(),
-      year: year,
-      month: month,
-      day: day,
+      year: 2026,
+      month: 4,
+      day: 8,
       compareDay: month * 30 + day,
       category: "교통비",
       isExpense: true,
-      price: 3000,
+      price: -3000,
     },
     {
       id: uuidv4(),
-      year: year,
-      month: month,
-      day: day,
+      year: 2026,
+      month: 4,
+      day: 7,
       compareDay: month * 30 + day,
       category: "문화생활",
       isExpense: true,
-      price: 20000,
+      price: -20000,
     },
   ];
 
-  // 이건 내림차순 버전 5개만 보여주는 리스트
-  const top5list: List[] = defaultList.sort((a, b) => b.price - a.price);
+  // 이건 가격 기준 내림차순 버전의 리스트
+  const descList: List[] = defaultList.sort((a, b) => b.price - a.price);
 
   return (
     <>
-      {screen.isHome && <Home top5list={top5list} />}
+      {screen.isHome && <Home descList={descList} />}
       {screen.isList && <List defaultList={defaultList} />}
       {screen.isInput && <Input />}
       {screen.isStat && <Stat />}
