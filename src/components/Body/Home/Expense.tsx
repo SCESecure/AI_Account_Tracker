@@ -42,8 +42,8 @@ export default function Expense({ descList }: { descList: List[] }) {
       <div>
         <p>총 지출</p>
         {/* 여기는 리스트에서 가져와야 함 */}
-        <p>{thisMonthTotal - lastMonthTotal}원</p>
-        <p>{Math.round(expensePercent * 100) / 100}%</p>
+        <p>-{thisMonthTotal - lastMonthTotal}원</p>
+        <p>-{Math.round(expensePercent * 100) / 100}%</p>
         <p>지난달 대비</p>
       </div>
     </>

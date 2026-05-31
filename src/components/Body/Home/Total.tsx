@@ -8,7 +8,7 @@ export default function Total() {
         {/* 이 부분은 계좌 총 자산을 계산해서 여기까지 끌어와야 함 */}
         <p>(전체 자산)원</p>
         <p>
-          {date.getMonth()}월 {date.getDay()}일 기준
+          {date.getMonth() + 1}월 {date.getDate()}일 기준
         </p>
       </div>
     </>
