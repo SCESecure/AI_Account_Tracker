@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 3960fb0ef582aa56f9b4411619f94abcdb690131
 import downIcon from "../../../assets/icons/arrow-down.svg";
 import dollarIcon from "../../../assets/icons/dollar.svg";
 import forkIcon from "../../../assets/icons/fork.svg";
@@ -16,8 +19,11 @@ interface Transaction {
   icon: string;
 }
 
+<<<<<<< HEAD
 =======
 >>>>>>> 416c18c328f931915f3a7924781587a1bae2c165
+=======
+>>>>>>> 3960fb0ef582aa56f9b4411619f94abcdb690131
 export default function FiveList() {
   const transactions: Transaction[] = [
     {
@@ -64,6 +70,9 @@ export default function FiveList() {
 
   return (
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 3960fb0ef582aa56f9b4411619f94abcdb690131
     <section className="recent-section">
       <div className="section-header">
         <h2>최근 거래 내역</h2>
@@ -91,6 +100,7 @@ export default function FiveList() {
         ))}
       </ul>
     </section>
+<<<<<<< HEAD
 =======
     <>
       <h3>Hello, FiveList Component!</h3>
@@ -116,5 +126,7 @@ export default function FiveList() {
       </div>
     </>
 >>>>>>> 416c18c328f931915f3a7924781587a1bae2c165
+=======
+>>>>>>> 3960fb0ef582aa56f9b4411619f94abcdb690131
   );
 }
