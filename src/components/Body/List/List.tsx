@@ -33,22 +33,22 @@ export default function List({ defaultList }: { defaultList: List[] }) {
     // 최신순일 때
     if (order === "recentOrder") {
       if (isAscend) {
-        setList(list.sort((a, b) => a.day - b.day));
+        setList(list.sort((a, b) => b.day - a.day));
         setIsAscend(false);
         return;
       }
-      setList(list.sort((a, b) => b.day - a.day));
+      setList(list.sort((a, b) => a.day - b.day));
       setIsAscend(true);
       return;
     }
 
     // 지출순일 때
     if (isAscend) {
-      setList(list.sort((a, b) => a.price - b.price));
+      setList(list.sort((a, b) => b.price - a.price));
       setIsAscend(false);
       return;
     }
-    setList(list.sort((a, b) => b.price - a.price));
+    setList(list.sort((a, b) => a.price - b.price));
     setIsAscend(true);
     return;
   };
