@@ -38,7 +38,7 @@ export default function Align({
       </button>
 
       <button onClick={orderHandler}>
-        {order === "recentOrder" ? "최신순" : "가격순"}
+        {order === "recentOrder" ? "최신순" : "지출순"}
       </button>
       <button onClick={isAscendHandler}>
         {isAscend ? "(오름차순)" : "(내림차순)"}

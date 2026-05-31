@@ -19,7 +19,7 @@ export default function List({ defaultList }: { defaultList: List[] }) {
 
   // -- 핸들러 영역 --
 
-  // 정렬 종류는 "최신순" 또는 "가격순"임
+  // 정렬 종류는 "최신순" 또는 "지출순"임
   const orderHandler = (): void => {
     if (order === "recentOrder") {
       setOrder("priceOrder");
@@ -42,7 +42,7 @@ export default function List({ defaultList }: { defaultList: List[] }) {
       return;
     }
 
-    // 금액순일 때
+    // 지출순일 때
     if (isAscend) {
       setList(list.sort((a, b) => a.price - b.price));
       setIsAscend(false);
