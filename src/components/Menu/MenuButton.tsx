@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 3960fb0ef582aa56f9b4411619f94abcdb690131
 import type { ScreenStatus } from "../../App";
 
 import homeIcon from "../../assets/icons/home.svg";
@@ -15,22 +11,10 @@ export default function MenuButton({
   screenHandler,
 }: {
   screen: ScreenStatus;
-<<<<<<< HEAD
-=======
-export default function MenuButton({
-  screenHandler,
-}: {
->>>>>>> 416c18c328f931915f3a7924781587a1bae2c165
-=======
->>>>>>> 3960fb0ef582aa56f9b4411619f94abcdb690131
   screenHandler: (targetScreen: string) => void;
 }) {
   return (
     <>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 3960fb0ef582aa56f9b4411619f94abcdb690131
       <button
         type="button"
         className={`menu-button ${screen.isHome ? "active" : ""}`}
@@ -75,16 +59,6 @@ export default function MenuButton({
         <img src={settingsIcon} alt="AI 분석" />
         <span>AI 분석</span>
       </button>
-<<<<<<< HEAD
-=======
-      <button onClick={() => screenHandler("Home")}>홈</button>
-      <button onClick={() => screenHandler("List")}>리스트</button>
-      <button onClick={() => screenHandler("Input")}>입력</button>
-      <button onClick={() => screenHandler("Stat")}>통계</button>
-      <button onClick={() => screenHandler("AI")}>AI 분석</button>
->>>>>>> 416c18c328f931915f3a7924781587a1bae2c165
-=======
->>>>>>> 3960fb0ef582aa56f9b4411619f94abcdb690131
     </>
   );
 }
