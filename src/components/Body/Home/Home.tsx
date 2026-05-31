@@ -5,7 +5,9 @@ import Income from "./Income";
 import Total from "./Total";
 
 export default function Home({ defaultList }: { defaultList: List[] }) {
-  const top5list = defaultList.sort((a, b) => b.price - a.price);
+  const top5list = defaultList.sort(
+    (a, b) => Math.abs(b.price) - Math.abs(a.price),
+  );
 
   return (
     <>
