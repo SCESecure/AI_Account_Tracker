@@ -33,11 +33,11 @@ export default function List({ defaultList }: { defaultList: List[] }) {
     // 최신순일 때
     if (order === "recentOrder") {
       if (isAscend) {
-        setList(list.sort((a, b) => a.compareDay - b.compareDay));
+        setList(list.sort((a, b) => a.day - b.day));
         setIsAscend(false);
         return;
       }
-      setList(list.sort((a, b) => b.compareDay - a.compareDay));
+      setList(list.sort((a, b) => b.day - a.day));
       setIsAscend(true);
       return;
     }

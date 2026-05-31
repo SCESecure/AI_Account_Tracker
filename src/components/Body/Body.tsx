@@ -14,7 +14,6 @@ export interface List {
   year: number;
   month: number;
   day: number;
-  compareDay: number; // 이거는 정렬을 할 때 쓰는거
   category: string;
   isExpense: boolean; // income일 경우 false, 아닐 경우 true
   price: number;
@@ -35,7 +34,6 @@ export default function Body({ screen }: { screen: ScreenStatus }) {
       year: 2026,
       month: 5,
       day: 31,
-      compareDay: month * 30 + day,
       category: "급여",
       isExpense: false,
       price: 2000000,
@@ -45,7 +43,6 @@ export default function Body({ screen }: { screen: ScreenStatus }) {
       year: 2026,
       month: 4,
       day: 5,
-      compareDay: month * 30 + day,
       category: "용돈",
       isExpense: false,
       price: 30000,
@@ -55,7 +52,6 @@ export default function Body({ screen }: { screen: ScreenStatus }) {
       year: 2026,
       month: 5,
       day: 28,
-      compareDay: month * 30 + day,
       category: "식비",
       isExpense: true,
       price: -15000,
@@ -65,7 +61,6 @@ export default function Body({ screen }: { screen: ScreenStatus }) {
       year: 2026,
       month: 4,
       day: 8,
-      compareDay: month * 30 + day,
       category: "교통비",
       isExpense: true,
       price: -3000,
@@ -75,7 +70,6 @@ export default function Body({ screen }: { screen: ScreenStatus }) {
       year: 2026,
       month: 4,
       day: 7,
-      compareDay: month * 30 + day,
       category: "문화생활",
       isExpense: true,
       price: -20000,
