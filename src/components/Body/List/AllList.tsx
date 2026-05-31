@@ -1,11 +1,14 @@
+import type { List } from "../Body";
 import ListItem from "./ListItem";
 
-export default function AllList() {
+export default function AllList({ dateSearched }: { dateSearched: List[] }) {
   return (
     <>
-      <h3>Hello, AllList Component!</h3>
-
-      <ListItem />
+      <div className="list_wrapper">
+        {dateSearched.map((item) => (
+          <ListItem key={item.id} {...item} />
+        ))}
+      </div>
     </>
   );
 }
