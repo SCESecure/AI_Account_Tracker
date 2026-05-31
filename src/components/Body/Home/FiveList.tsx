@@ -1,9 +1,66 @@
-import { money, transactions } from "./homeData";
+import downIcon from "../../../assets/icons/arrow-down.svg";
+import dollarIcon from "../../../assets/icons/dollar.svg";
+import forkIcon from "../../../assets/icons/fork.svg";
+import busIcon from "../../../assets/icons/bus.svg";
+import giftIcon from "../../../assets/icons/gift.svg";
+
+type TransactionType = "income" | "expense";
+
+interface Transaction {
+  id: number;
+  title: string;
+  date: string;
+  amount: number;
+  type: TransactionType;
+  icon: string;
+}
 
 export default function FiveList() {
+  const transactions: Transaction[] = [
+    {
+      id: 1,
+      title: "급여",
+      date: "5월 17일 (금)",
+      amount: 2000000,
+      type: "income",
+      icon: downIcon,
+    },
+    {
+      id: 2,
+      title: "용돈",
+      date: "5월 16일 (목)",
+      amount: 30000,
+      type: "income",
+      icon: dollarIcon,
+    },
+    {
+      id: 3,
+      title: "식비",
+      date: "5월 16일 (목)",
+      amount: -15000,
+      type: "expense",
+      icon: forkIcon,
+    },
+    {
+      id: 4,
+      title: "교통비",
+      date: "5월 15일 (수)",
+      amount: -3000,
+      type: "expense",
+      icon: busIcon,
+    },
+    {
+      id: 5,
+      title: "문화생활",
+      date: "5월 14일 (화)",
+      amount: -20000,
+      type: "expense",
+      icon: giftIcon,
+    },
+  ];
+
   return (
     <section className="recent-section">
-
       <div className="section-header">
         <h2>최근 거래 내역</h2>
 
@@ -11,10 +68,8 @@ export default function FiveList() {
       </div>
 
       <ul className="transaction-list">
-       
         {transactions.map((transaction) => (
           <li key={transaction.id} className="transaction-item">
-
             <div className={`transaction-icon ${transaction.type}`}>
               <img src={transaction.icon} alt={transaction.title} />
             </div>
@@ -26,7 +81,7 @@ export default function FiveList() {
 
             <strong className={`transaction-price ${transaction.type}`}>
               {transaction.amount > 0 ? "+" : ""}
-              {money(transaction.amount)}
+              {transaction.amount.toLocaleString("ko-KR")}원
             </strong>
           </li>
         ))}
