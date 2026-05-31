@@ -76,12 +76,9 @@ export default function Body({ screen }: { screen: ScreenStatus }) {
     },
   ];
 
-  // 이건 가격 기준 내림차순 버전의 리스트
-  const descList: List[] = defaultList.sort((a, b) => b.price - a.price);
-
   return (
     <>
-      {screen.isHome && <Home descList={descList} />}
+      {screen.isHome && <Home defaultList={defaultList} />}
       {screen.isList && <List defaultList={defaultList} />}
       {screen.isInput && <Input />}
       {screen.isStat && <Stat />}

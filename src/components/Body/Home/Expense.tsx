@@ -1,6 +1,6 @@
 import type { List } from "../Body";
 
-export default function Expense({ descList }: { descList: List[] }) {
+export default function Expense({ defaultList }: { defaultList: List[] }) {
   /*
 
   [방식은 income.tsx와 비슷하게 가면 됨]
@@ -24,13 +24,13 @@ export default function Expense({ descList }: { descList: List[] }) {
   let thisMonthTotal = 0; // 이번달 전체 지출
   let lastMonthTotal = 0; // 지난달 전체 지출
 
-  for (let i = 0; i < descList.length; i++) {
-    if (descList[i].isExpense) {
-      if (descList[i].month === todayDate.getMonth() + 1) {
-        thisMonthTotal += descList[i].price;
+  for (let i = 0; i < defaultList.length; i++) {
+    if (defaultList[i].isExpense) {
+      if (defaultList[i].month === todayDate.getMonth() + 1) {
+        thisMonthTotal += defaultList[i].price;
       }
-      if (descList[i].month === todayDate.getMonth()) {
-        lastMonthTotal += descList[i].price;
+      if (defaultList[i].month === todayDate.getMonth()) {
+        lastMonthTotal += defaultList[i].price;
       }
     }
   }
