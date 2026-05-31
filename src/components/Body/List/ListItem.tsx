@@ -17,7 +17,7 @@ export default function ListItem({
         {month}월 {day}일
       </p>
       <p>{category}</p>
-      <p>{isExpense ? "(지출)" + price : "(수입)" + price}</p>
+      <p>{isExpense ? price : "+" + price}</p>
     </>
   );
 }
