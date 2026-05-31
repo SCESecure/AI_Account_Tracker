@@ -17,7 +17,6 @@ export default function FiveList({ top5list }: { top5list: List[] }) {
 
   return (
     <>
-      <h3>Hello, FiveList Component!</h3>
       <ul>{result}</ul>
     </>
   );

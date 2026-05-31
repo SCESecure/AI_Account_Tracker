@@ -11,8 +11,6 @@ export default function Home({ defaultList }: { defaultList: List[] }) {
 
   return (
     <>
-      <h2>Hello, Home Component!</h2>
-
       <Total />
       <Income defaultList={defaultList} />
       <Expense defaultList={defaultList} />

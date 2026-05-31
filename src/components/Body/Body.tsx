@@ -19,13 +19,6 @@ export interface List {
   price: number;
 }
 
-// 이거 나중에 input 컴포넌트 만들때 반드시 업뎃해야 함!!!!
-// 즉, 임시 값임!
-const date = new Date();
-const year = date.getFullYear();
-const month = date.getMonth() + 1;
-const day = date.getDate();
-
 export default function Body({ screen }: { screen: ScreenStatus }) {
   // 기본 리스트
   const defaultList: List[] = [
