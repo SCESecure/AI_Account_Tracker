@@ -1,16 +1,19 @@
-export default function Total() {
-  const date = new Date();
+import plusCircleIcon from "../../../assets/icons/plus-circle.svg";
 
+import { homeSummary, money } from "./homeData";
+
+export default function Total() {
   return (
-    <>
-      <div>
-        <p>총 자산</p>
-        {/* 이 부분은 계좌 총 자산을 계산해서 여기까지 끌어와야 함 */}
-        <p>(전체 자산)원</p>
-        <p>
-          {date.getMonth()}월 {date.getDay()}일 기준
-        </p>
+
+    <section className="total-card">
+      <div className="total-title">
+        <span>총 자산</span>
+        <img src={plusCircleIcon} alt="총 자산 추가" />
       </div>
-    </>
+
+      <strong>{money(homeSummary.totalAsset)}</strong>
+
+      <p>{homeSummary.standardDate}</p>
+    </section>
   );
 }
