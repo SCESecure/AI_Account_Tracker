@@ -1,4 +1,6 @@
 import OpenAI from "openai";
+import React from "react";
+import { useState } from "react";
 
 const key = import.meta.env.VITE_OPENAI_API_KEY;
 const openai = new OpenAI({
@@ -12,20 +14,27 @@ const sendmsg = async () => {
     input: [
       {
         role: "user",
-        content: "재미있는 이야기 하나 해줘.",
+        content: "재미있는 이야기 하나 해줘.", // 테스트
       },
     ],
   });
 
-  console.log(response);
+  return response.output_text;
+
+  // console.log(response);
 };
 
-export default function AdviseItem() {
+export default React.memo(function AdviseItem() {
+  const [apioutput, setApioutput] = useState<string>("");
+
+  // sendmsg().then((value) => setApioutput(apioutput + value));
+
   return (
     <>
       {/* 아이콘 부분은 스타일에서 처리 */}
       <p>[아이콘]</p>
-      <button onClick={sendmsg}>Test</button>
+      <p>{apioutput}</p>
+      {/* <button onClick={sendmsg}>Test</button> */}
     </>
   );
-}
+});

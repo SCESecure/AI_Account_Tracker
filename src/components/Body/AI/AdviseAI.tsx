@@ -1,12 +1,13 @@
+import React from "react";
 import AdviseItem from "./AdviseItem";
 
-export default function AdviseAI() {
+export default React.memo(function AdviseAI() {
   const todayDate = new Date();
-  const adviseItem = [];
+  // const adviseItem = [];
 
   // for (let i = 0; i < 3; i++) {
   //   adviseItem.push(
-  //     <li>
+  //     <li key={i}>
   //       <AdviseItem />
   //     </li>,
   //   );
@@ -22,7 +23,8 @@ export default function AdviseAI() {
       </h3>
 
       {/* <ul>{adviseItem}</ul> */}
+
       <AdviseItem />
     </>
   );
-}
+});
