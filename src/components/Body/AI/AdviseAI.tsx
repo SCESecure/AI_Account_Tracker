@@ -4,13 +4,13 @@ export default function AdviseAI() {
   const todayDate = new Date();
   const adviseItem = [];
 
-  for (let i = 0; i < 3; i++) {
-    adviseItem.push(
-      <li>
-        <AdviseItem />
-      </li>,
-    );
-  }
+  // for (let i = 0; i < 3; i++) {
+  //   adviseItem.push(
+  //     <li>
+  //       <AdviseItem />
+  //     </li>,
+  //   );
+  // }
 
   return (
     <>
@@ -21,7 +21,8 @@ export default function AdviseAI() {
         {todayDate.getMonth() + 1}월 소비 트렌드에요!
       </h3>
 
-      <ul>{adviseItem}</ul>
+      {/* <ul>{adviseItem}</ul> */}
+      <AdviseItem />
     </>
   );
 }
