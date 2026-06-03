@@ -25,4 +25,4 @@ dist-ssr
 
 # env file
 .env
-/src/secure/*
+src/secure/*
