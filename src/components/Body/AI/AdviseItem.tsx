@@ -1,7 +1,18 @@
-export default function AdviseItem() {
+import React from "react";
+
+export default React.memo(function AdviseItem({
+  aiArr,
+  index,
+}: {
+  aiArr: string[];
+  index: number;
+}) {
   return (
     <>
-      <h4>Hello, AdviseItem Component!</h4>
+      {/* 아이콘 부분은 스타일에서 처리 */}
+      <p>[아이콘]</p>
+      <p>{aiArr[index]}</p>
+      {/* <button onClick={sendmsg}>Test</button> */}
     </>
   );
-}
+});
