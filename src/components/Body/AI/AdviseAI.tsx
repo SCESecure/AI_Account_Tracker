@@ -1,7 +1,11 @@
 import React from "react";
 import AdviseItem from "./AdviseItem";
 
-export default React.memo(function AdviseAI() {
+export default React.memo(function AdviseAI({
+  apioutput,
+}: {
+  apioutput: string;
+}) {
   const todayDate = new Date();
   // const adviseItem = [];
 
@@ -24,7 +28,7 @@ export default React.memo(function AdviseAI() {
 
       {/* <ul>{adviseItem}</ul> */}
 
-      <AdviseItem />
+      <AdviseItem apioutput={apioutput} />
     </>
   );
 });
