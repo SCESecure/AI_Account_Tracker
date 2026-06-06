@@ -28,7 +28,7 @@ export default React.memo(function AdviseAI({
 
       {/* <ul>{adviseItem}</ul> */}
 
-      <AdviseItem apioutput={apioutput} />
+      <AdviseItem apioutput={apioutput}/>
     </>
   );
 });
