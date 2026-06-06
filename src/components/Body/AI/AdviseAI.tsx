@@ -1,21 +1,17 @@
 import React from "react";
 import AdviseItem from "./AdviseItem";
 
-export default React.memo(function AdviseAI({
-  apioutput,
-}: {
-  apioutput: string;
-}) {
+export default React.memo(function AdviseAI({ aiArr }: { aiArr: string[] }) {
   const todayDate = new Date();
-  // const adviseItem = [];
+  const adviseItem = [];
 
-  // for (let i = 0; i < 3; i++) {
-  //   adviseItem.push(
-  //     <li key={i}>
-  //       <AdviseItem />
-  //     </li>,
-  //   );
-  // }
+  for (let i = 0; i < 3; i++) {
+    adviseItem.push(
+      <li key={i}>
+        <AdviseItem aiArr={aiArr} index={i}/>
+      </li>,
+    );
+  }
 
   return (
     <>
@@ -26,9 +22,9 @@ export default React.memo(function AdviseAI({
         {todayDate.getMonth() + 1}월 소비 트렌드에요!
       </h3>
 
-      {/* <ul>{adviseItem}</ul> */}
+      <ul>{adviseItem}</ul>
 
-      <AdviseItem apioutput={apioutput}/>
+      {/* <AdviseItem aiArr={aiArr} /> */}
     </>
   );
 });

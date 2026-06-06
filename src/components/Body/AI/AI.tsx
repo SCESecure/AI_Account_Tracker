@@ -1,5 +1,5 @@
 import OpenAI from "openai";
-import { lazy, Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import ButtonAI from "./ButtonAI";
 import AdviseAI from "./AdviseAI";
 import type { List } from "../Body";
@@ -16,28 +16,33 @@ const systemPrompt =
    최소 2줄에서 최대 4줄 요약해서 조언을 하십시오. \
    또한 반드시 존칭을 사용해서 친근감있게, 동시에 현실적으로 조언을 하십시오. \
    따로 전체 요약은 하지 말고, 지출 카테고리 중 하나를 임의로 골라서 요약하고 조언하십시오. \
+   여기서 주의해야 할 점은 카테고리 중 하나를 임의로 고르는 건 좋지만, 만일 이전에 이미 분석한 내용이 있다면, \
+   분석한 카테고리는 제외해서 분석하십시오. \
+   만일 분석할 카테고리가 없을 경우 분석할 카테고리가 없다고 사용자에게 알리십시오. \
    예를 들면 다음과 같습니다. (내용은 달라도 됩니다. 이건 예시일 뿐이니 참고해서 조언을 하시길 바랍니다.) \
-   [예시 1] \
+   [예시 1 : (식비 카테고리 분석)] \
    '식비가 지난 달 보다 45%나 증가했어요. \
    외식이나 배달 대신 집밥을 조금 더 활용하시다 보면, \
    식비를 최대한 줄일 수 있을 거에요!' \
-   [예시 2] \
+   [예시 2 : (교통비 카테고리 분석)] \
    '교통비는 안정적이네요. \
    하지만 그래도 식비 다음으로 차지하고 있으니, 줄일 필요가 있을 것 같아요.' \
-   [예시 3] \
+   [예시 3 : (게임비 카테고리 분석)] \
    '게임비가 너무 높아요. \
    최대한 게임에 투자하는 돈을 줄여보는 게 어떠한가요? \
    게임에 돈을 지출하기 전에 다시 한번 생각해보는 것도 \
-   줄이는 방법 중 일부랍니다!'";
-const userPrompt =
-  "여기 내 가계부인데 현재 지출에 대해 조언을 좀 해줄 수 있어?";
+   줄이는 방법 중 일부랍니다!' \
+   [예시 4 (분석할 카테고리가 없을 경우)] \
+   '현재 사용자님의 지출 내역을 분석할 정도의 내역이 없어요... \
+   입력 화면에서 지출 내역을 추가해주시겠어요...?'";
+let userPrompt = "여기 내 가계부인데 현재 지출에 대해 조언을 좀 해줄 수 있어?";
 
 const openai = new OpenAI({
   apiKey: key,
   dangerouslyAllowBrowser: true,
 });
 
-const sendmsg = async (list: string) => {
+const sendmsg = async (list: string, prompt: string) => {
   const response = await openai.responses.create({
     model: "gpt-5.4-mini",
     input: [
@@ -47,12 +52,12 @@ const sendmsg = async (list: string) => {
       },
       {
         role: "user",
-        content: userPrompt + list,
+        content: prompt + list,
       },
     ],
   });
+  console.log(response);
   return response.output_text;
-  // console.log(response);
 };
 
 // 로딩 영역
@@ -68,20 +73,57 @@ const sendmsg = async (list: string) => {
 export default function AI({ defaultList }: { defaultList: List[] }) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showAI, setShowAI] = useState<boolean>(false);
-  const [apioutput, setApioutput] = useState<string>("");
+  const [aiArr, setAiArr] = useState<string[]>([]);
 
   const handleShowAI = (): void => {
     setShowAI(() => !showAI);
-    setApioutput("");
+    setAiArr([]);
+    userPrompt = "여기 내 가계부인데 현재 지출에 대해 조언을 좀 해줄 수 있어?";
   };
   // 이 부분 claude 사용해서 해결하였음
-  // (다중 API 호출 방지와 API 로딩 부분)
+  // (자동으로 다중 API 호출 방지와 API 로딩 부분만 사용)
   useEffect(() => {
     if (showAI) {
       setIsLoading(true); // 이거는 무시 가능한 오류임!
-      sendmsg(JSON.stringify(defaultList))
-        .then((value) => setApioutput(value))
-        .finally(() => setIsLoading(false));
+
+      const run = async () => {
+        try {
+          let prompt = userPrompt;
+          const result: string[] = [];
+
+          for (let i = 0; i < 3; i++) {
+            const value = await sendmsg(JSON.stringify(defaultList), prompt);
+            result.push(value);
+            prompt += `(분석한 내용 : ${value})`;
+          }
+          setAiArr(result);
+        } finally {
+          setIsLoading(false);
+        }
+      };
+
+      run();
+
+      // try {
+      //   sendmsg(JSON.stringify(defaultList)).then((value) => {
+      //     aiArr.push(value);
+      //     userPrompt =
+      //       userPrompt + "(분석한 카테고리 있음. 분석한 내용 :" + value + ")";
+      //   });
+      //   sendmsg(JSON.stringify(defaultList)).then((value) => {
+      //     aiArr.push(value);
+      //     userPrompt =
+      //       userPrompt + "(분석한 카테고리 있음. 분석한 내용 :" + value + ")";
+      //   });
+      //   sendmsg(JSON.stringify(defaultList)).then((value) => {
+      //     aiArr.push(value);
+      //     userPrompt =
+      //       userPrompt + "(분석한 카테고리 있음. 분석한 내용 :" + value + ")";
+      //   });
+      // } finally {
+      //   setIsLoading(false);
+      // }
+      // .finally(() => setIsLoading(false));
     }
   }, [showAI]);
 
@@ -91,11 +133,7 @@ export default function AI({ defaultList }: { defaultList: List[] }) {
 
       {showAI && (
         <Suspense>
-          {isLoading ? (
-            <p>분석 중입니다...</p>
-          ) : (
-            <AdviseAI apioutput={apioutput} />
-          )}
+          {isLoading ? <p>분석 중입니다...</p> : <AdviseAI aiArr={aiArr} />}
         </Suspense>
       )}
 
