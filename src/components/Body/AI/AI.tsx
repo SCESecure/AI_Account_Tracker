@@ -2,6 +2,7 @@ import OpenAI from "openai";
 import { lazy, Suspense, useEffect, useState } from "react";
 import ButtonAI from "./ButtonAI";
 import AdviseAI from "./AdviseAI";
+import type { List } from "../Body";
 
 // --- API 영역 ---
 // 어차피 유저가 직접 입력하지 않을 것이기 떄문에 prompt injection은 일어나지 않음
@@ -9,23 +10,25 @@ import AdviseAI from "./AdviseAI";
 const key = import.meta.env.VITE_OPENAI_API_KEY;
 const systemPrompt =
   "당신은 사용자의 가계부를 보고 지출 상태를 분석하는 분석가이자, 전문가이자, 상담가입니다. \
-   사용자가 주는 데이터들은 사용자의 가계부입니다. 가계부의 지출 내역을 분석하고, 사용자에게 조언을 하십시오. \
-   단, 사용자에게 조언을 할 때는 3개의 카테고리로 나누어서 조언을 해야하는데, \
-   각 카테고리 당 최소 2줄에서 최대 4줄 요약해서 조언을 하십시오. \
+   사용자가 주는 데이터들은 사용자의 가계부이며, \
+   데이터들의 타입은 Object 형태에서 JSON.stringify()를 이용해 string 형태로 바꾼 형태입니다. \
+   가계부의 지출 내역을 분석하고, 사용자에게 조언을 하십시오. \
+   최소 2줄에서 최대 4줄 요약해서 조언을 하십시오. \
    또한 반드시 존칭을 사용해서 친근감있게, 동시에 현실적으로 조언을 하십시오. \
+   따로 전체 요약은 하지 말고, 지출 카테고리 중 하나를 임의로 골라서 요약하고 조언하십시오. \
    예를 들면 다음과 같습니다. (내용은 달라도 됩니다. 이건 예시일 뿐이니 참고해서 조언을 하시길 바랍니다.) \
    [예시 1] \
-   식비가 지난 달 보다 45%나 증가했어요. \
+   '식비가 지난 달 보다 45%나 증가했어요. \
    외식이나 배달 대신 집밥을 조금 더 활용하시다 보면, \
-   식비를 최대한 줄일 수 있을 거에요! \
+   식비를 최대한 줄일 수 있을 거에요!' \
    [예시 2] \
-   교통비는 안정적이네요. \
-   하지만 그래도 식비 다음으로 차지하고 있으니, 줄일 필요가 있을 것 같아요. \
+   '교통비는 안정적이네요. \
+   하지만 그래도 식비 다음으로 차지하고 있으니, 줄일 필요가 있을 것 같아요.' \
    [예시 3] \
-   게임비가 너무 높아요. \
+   '게임비가 너무 높아요. \
    최대한 게임에 투자하는 돈을 줄여보는 게 어떠한가요? \
    게임에 돈을 지출하기 전에 다시 한번 생각해보는 것도 \
-   줄이는 방법 중 일부랍니다!";
+   줄이는 방법 중 일부랍니다!'";
 const userPrompt =
   "여기 내 가계부인데 현재 지출에 대해 조언을 좀 해줄 수 있어?";
 
@@ -34,7 +37,7 @@ const openai = new OpenAI({
   dangerouslyAllowBrowser: true,
 });
 
-const sendmsg = async () => {
+const sendmsg = async (list: string) => {
   const response = await openai.responses.create({
     model: "gpt-5.4-mini",
     input: [
@@ -44,7 +47,7 @@ const sendmsg = async () => {
       },
       {
         role: "user",
-        content: userPrompt,
+        content: userPrompt + list,
       },
     ],
   });
@@ -62,7 +65,7 @@ const sendmsg = async () => {
 //     }),
 // );
 
-export default function AI() {
+export default function AI({ defaultList }: { defaultList: List[] }) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showAI, setShowAI] = useState<boolean>(false);
   const [apioutput, setApioutput] = useState<string>("");
@@ -76,7 +79,7 @@ export default function AI() {
   useEffect(() => {
     if (showAI) {
       setIsLoading(true); // 이거는 무시 가능한 오류임!
-      sendmsg()
+      sendmsg(JSON.stringify(defaultList))
         .then((value) => setApioutput(value))
         .finally(() => setIsLoading(false));
     }
