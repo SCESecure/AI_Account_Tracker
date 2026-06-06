@@ -1,5 +1,5 @@
 import OpenAI from "openai";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 const key = import.meta.env.VITE_OPENAI_API_KEY;
@@ -27,7 +27,9 @@ const sendmsg = async () => {
 export default React.memo(function AdviseItem() {
   const [apioutput, setApioutput] = useState<string>("");
 
-  // sendmsg().then((value) => setApioutput(apioutput + value));
+  useEffect(() => {
+    sendmsg().then((value) => setApioutput(apioutput + value));
+  }, []);
 
   return (
     <>
