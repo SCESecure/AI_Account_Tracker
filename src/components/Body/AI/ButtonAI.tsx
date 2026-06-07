@@ -1,7 +1,7 @@
 export default function ButtonAI() {
   return (
-    <>
-      <h3>Hello, ButtonAI Component!</h3>
-    </>
+    <button className="ai-analyze-button" type="button">
+      다시 분석하기
+    </button>
   );
 }

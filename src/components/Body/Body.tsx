@@ -25,6 +25,15 @@ export default function Body({ screen }: { screen: ScreenStatus }) {
     {
       id: uuidv4(),
       year: 2026,
+      month: 6,
+      day: 1,
+      category: "급여",
+      isExpense: false,
+      price: 2000000,
+    },
+    {
+      id: uuidv4(),
+      year: 2026,
       month: 5,
       day: 1,
       category: "급여",

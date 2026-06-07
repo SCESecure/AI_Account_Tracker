@@ -56,7 +56,7 @@ export default function Expense({ defaultList }: { defaultList: List[] }) {
 
   return (
     <article className={expenseCardClassName}>
-      <p className="summary-title">총 지출</p>
+      <p className="summary-title">월 지출</p>
 
       {/* 여기는 리스트에서 가져와야 함 */}
       <strong>{thisMonthTotal.toLocaleString("ko-KR")}원</strong>

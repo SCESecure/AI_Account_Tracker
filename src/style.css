@@ -395,3 +395,275 @@ button {
   filter: invert(39%) sepia(96%) saturate(2405%) hue-rotate(216deg)
     brightness(100%);
 }
+
+/* AI 분석 화면 전체 영역 */
+.ai-page {
+  height: 100%;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+/* AI 로봇과 제목 영역 */
+.ai-hero {
+  width: 100%;
+  text-align: center;
+  padding-top: 2px;
+}
+
+/* AI 로봇 이미지 */
+.ai-robot {
+  width: 135px;
+  height: 135px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 16px;
+}
+
+/* AI 분석 제목 */
+.ai-hero h2 {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 800;
+  line-height: 1.45;
+  letter-spacing: -0.03em;
+  color: #111827;
+}
+
+/* AI 조언 카드 리스트 */
+.ai-advice-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* AI 조언 카드 */
+.ai-advice-card {
+  width: 100%;
+  min-height: 135px;
+  padding: 22px 24px;
+  border-radius: 15px;
+  background: #ffffff;
+  border: 1px solid #edf0f5;
+  box-shadow:
+    0 10px 22px rgba(15, 23, 42, 0.06),
+    0 3px 8px rgba(15, 23, 42, 0.04);
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  align-items: center;
+  gap: 18px;
+}
+
+/* AI 조언 카드 아이콘 영역 */
+.ai-advice-icon {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+}
+
+/* AI 조언 카드 아이콘 이미지 */
+.ai-advice-icon img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+}
+
+/* 빨간 계열 조언 아이콘 */
+.ai-advice-icon.danger img {
+  filter: invert(17%) sepia(100%) saturate(6051%) hue-rotate(357deg)
+    brightness(100%);
+}
+
+/* 초록 계열 조언 아이콘 */
+.ai-advice-icon.success img {
+  filter: invert(47%) sepia(86%) saturate(500%) hue-rotate(63deg)
+    brightness(92%);
+}
+
+/* AI 조언 텍스트 영역 */
+.ai-advice-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* AI 조언 제목 */
+.ai-advice-content h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.02em;
+}
+
+/* AI 조언 설명 */
+.ai-advice-content p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #111827;
+}
+
+/* 다시 분석하기 버튼 */
+.ai-analyze-button {
+  width: 100%;
+  height: 64px;
+  margin-top: auto;
+  margin-bottom: 16px;
+  border: 0;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #4c6fff 0%, #3157f4 100%);
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(49, 87, 244, 0.28);
+}
+
+/* 다시 분석하기 버튼 클릭 느낌 */
+.ai-analyze-button:active {
+  transform: translateY(1px);
+}
+
+/* 자산 리스트 화면 전체 영역 */
+.asset-list-page {
+  height: 100%;
+  padding: 0 42px;
+  overflow: hidden;
+}
+
+/* 날짜 선택 / 정렬 버튼 전체 영역 */
+.asset-list-control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 36px;
+}
+
+/* 년월 선택 영역 */
+.asset-list-date {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* 년월 텍스트 */
+.asset-list-date p {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: #111827;
+}
+
+/* 년월 이동 버튼 */
+.asset-list-date button {
+  border: 0;
+  background: transparent;
+  color: #111827;
+  font-size: 30px;
+  font-weight: 900;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* 비활성화된 다음달 버튼 */
+.asset-list-date button:disabled {
+  color: #cbd5e1;
+  cursor: default;
+}
+
+/* 정렬 버튼 묶음 */
+.asset-list-sort-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* 최신순 / 지출순 / 오름차순 / 내림차순 버튼 */
+.asset-list-sort-box button {
+  border: 0;
+  background: transparent;
+  color: #111827;
+  font-size: 19px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* 기존 list_wrapper를 유지하면서 리스트 전체 디자인 적용 */
+.list_wrapper.asset-list-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+/* 리스트 전체 영역 */
+.asset-list-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+/* 거래 내역 한 줄 - 입체감 카드 형태 */
+.asset-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 22px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(229, 231, 235, 0.9);
+  box-shadow:
+    0 8px 18px rgba(15, 23, 42, 0.06),
+    0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+/* 날짜와 카테고리 영역 */
+.asset-list-item-left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 날짜 텍스트 */
+.asset-list-date-text {
+  margin: 0;
+  color: #3867ff;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+/* 카테고리 텍스트 */
+.asset-list-category {
+  margin: 0;
+  color: #111827;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+/* 금액 공통 */
+.asset-list-price {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  align-self: center;
+}
+
+/* 수입 금액 */
+.asset-list-price.income {
+  color: #23a323;
+}
+
+/* 지출 금액 */
+.asset-list-price.expense {
+  color: #ff3b30;
+}

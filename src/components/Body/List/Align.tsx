@@ -20,29 +20,36 @@ export default function Align({
   datePlusHandler: () => void;
 }) {
   return (
-    <>
-      {/* 날짜 부분 */}
-      <button type="button" onClick={dateMinusHandler}>
-        (왼쪽 화살표)
-      </button>
-      <p>
-        {tyear}년 {tmonth}월
-      </p>
-      <button
-        onClick={datePlusHandler}
-        disabled={
-          tmonth >= tdate.getMonth() + 1 && tyear >= tdate.getFullYear()
-        }
-      >
-        (오른쪽 화살표)
-      </button>
+    <div className="asset-list-control">
+      <div className="asset-list-date">
+        <button type="button" onClick={dateMinusHandler}>
+          &lt;
+        </button>
 
-      <button onClick={orderHandler}>
-        {order === "recentOrder" ? "최신순" : "지출순"}
-      </button>
-      <button onClick={isAscendHandler}>
-        {isAscend ? "(오름차순)" : "(내림차순)"}
-      </button>
-    </>
+        <p>
+          {tyear}년 {tmonth}월
+        </p>
+
+        <button
+          type="button"
+          onClick={datePlusHandler}
+          disabled={
+            tmonth >= tdate.getMonth() + 1 && tyear >= tdate.getFullYear()
+          }
+        >
+          &gt;
+        </button>
+      </div>
+
+      <div className="asset-list-sort-box">
+        <button type="button" onClick={orderHandler}>
+          {order === "recentOrder" ? "최신순" : "지출순"}
+        </button>
+
+        <button type="button" onClick={isAscendHandler}>
+          {isAscend ? "↑" : "↓"}
+        </button>
+      </div>
+    </div>
   );
 }
