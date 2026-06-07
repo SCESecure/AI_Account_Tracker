@@ -1,35 +1,14 @@
-<<<<<<< HEAD
-interface AdviseItemProps {
-  icon: string;
-  type: "success" | "danger";
-  title: string;
-  description: string;
-  subText: string;
-}
+// interface AdviseItemProps {
+//   icon: string;
+//   type: "success" | "danger";
+//   title: string;
+//   description: string;
+//   subText: string;
+// }
+// props 수정했으므로 인터페이스 다시 짤 필요 있음.
 
 export default function AdviseItem({
-  icon,
-  type,
-  title,
-  description,
-  subText,
-}: AdviseItemProps) {
-  return (
-    <article className="ai-advice-card">
-      <div className={`ai-advice-icon ${type}`}>
-        <img src={icon} alt={title} />
-      </div>
-
-      <div className="ai-advice-content">
-        <h3>{title}</h3>
-        <p>{description}</p>
-        <p>{subText}</p>
-      </div>
-    </article>
-=======
-import React from "react";
-
-export default React.memo(function AdviseItem({
+  // icon,
   aiArr,
   index,
 }: {
@@ -37,12 +16,15 @@ export default React.memo(function AdviseItem({
   index: number;
 }) {
   return (
-    <>
-      {/* 아이콘 부분은 스타일에서 처리 */}
-      <p>[아이콘]</p>
-      <p>{aiArr[index]}</p>
-      {/* <button onClick={sendmsg}>Test</button> */}
-    </>
->>>>>>> 78c8f09c76316983f8bd87cb67d472bbbccdfcc7
+    <article className="ai-advice-card">
+      {/* <div className={`ai-advice-icon ${type}`}>
+        <img src={icon} alt={title} />
+      </div> */}
+
+      <div className="ai-advice-content">
+        {/* <h3>{title}</h3> */}
+        <p>{aiArr[index]}</p>
+      </div>
+    </article>
   );
-});
+}

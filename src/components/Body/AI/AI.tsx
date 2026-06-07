@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 import robotSmile from "../../../assets/icons/robot_smile_transparent.svg";
-import AdviseAI from "./AdviseAI";
-=======
 import OpenAI from "openai";
 import { Suspense, useEffect, useState } from "react";
->>>>>>> 78c8f09c76316983f8bd87cb67d472bbbccdfcc7
 import ButtonAI from "./ButtonAI";
 import AdviseAI from "./AdviseAI";
 import type { List } from "../Body";
@@ -132,40 +128,15 @@ export default function AI({ defaultList }: { defaultList: List[] }) {
     }
   }, [showAI]);
 
-<<<<<<< HEAD
-export default function AI() {
-  const todayDate = new Date();
-
-  const currentMonth = todayDate.getMonth() + 1;
-
-=======
->>>>>>> 78c8f09c76316983f8bd87cb67d472bbbccdfcc7
   return (
-    <section className="ai-page">
-      <div className="ai-hero">
-        <img className="ai-robot" src={robotSmile} alt="AI 분석 로봇" />
-
-        <h2>
-          AI가 분석한
-          <br />
-          {currentMonth}월 소비 트렌드예요!
-        </h2>
-      </div>
-
-<<<<<<< HEAD
-      <AdviseAI />
-
-      <ButtonAI />
-    </section>
-=======
+    <>
       {showAI && (
         <Suspense>
           {isLoading ? <p>분석 중입니다...</p> : <AdviseAI aiArr={aiArr} />}
         </Suspense>
       )}
 
-      <ButtonAI showAI={showAI} handleShowAI={handleShowAI} />
+      <ButtonAI handleShowAI={handleShowAI} />
     </>
->>>>>>> 78c8f09c76316983f8bd87cb67d472bbbccdfcc7
   );
 }
