@@ -84,7 +84,7 @@ export default function Body({ screen }: { screen: ScreenStatus }) {
       {screen.isList && <List defaultList={defaultList} />}
       {screen.isInput && <Input />}
       {screen.isStat && <Stat />}
-      {screen.isAI && <AI />}
+      {screen.isAI && <AI defaultList={defaultList} />}
     </main>
   );
 }

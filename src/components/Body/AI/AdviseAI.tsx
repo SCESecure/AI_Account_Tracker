@@ -1,10 +1,26 @@
+<<<<<<< HEAD
 import busIcon from "../../../assets/icons/bus.svg";
 import chartIcon from "../../../assets/icons/chart.svg";
 import forkIcon from "../../../assets/icons/fork.svg";
+=======
+import React from "react";
+>>>>>>> 78c8f09c76316983f8bd87cb67d472bbbccdfcc7
 import AdviseItem from "./AdviseItem";
 
-export default function AdviseAI() {
+export default React.memo(function AdviseAI({ aiArr }: { aiArr: string[] }) {
+  const todayDate = new Date();
+  const adviseItem = [];
+
+  for (let i = 0; i < 3; i++) {
+    adviseItem.push(
+      <li key={i}>
+        <AdviseItem aiArr={aiArr} index={i}/>
+      </li>,
+    );
+  }
+
   return (
+<<<<<<< HEAD
     <div className="ai-advice-list">
       <AdviseItem
         icon={forkIcon}
@@ -30,5 +46,19 @@ export default function AdviseAI() {
         subText="목표 달성을 응원해요 💪"
       />
     </div>
+=======
+    <>
+      {/* 여기 h3 태그 가운데 정렬 필요! */}
+      <h3>
+        AI가 분석한
+        <br />
+        {todayDate.getMonth() + 1}월 소비 트렌드에요!
+      </h3>
+
+      <ul>{adviseItem}</ul>
+
+      {/* <AdviseItem aiArr={aiArr} /> */}
+    </>
+>>>>>>> 78c8f09c76316983f8bd87cb67d472bbbccdfcc7
   );
-}
+});

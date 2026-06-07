@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 interface AdviseItemProps {
   icon: string;
   type: "success" | "danger";
@@ -25,5 +26,23 @@ export default function AdviseItem({
         <p>{subText}</p>
       </div>
     </article>
+=======
+import React from "react";
+
+export default React.memo(function AdviseItem({
+  aiArr,
+  index,
+}: {
+  aiArr: string[];
+  index: number;
+}) {
+  return (
+    <>
+      {/* 아이콘 부분은 스타일에서 처리 */}
+      <p>[아이콘]</p>
+      <p>{aiArr[index]}</p>
+      {/* <button onClick={sendmsg}>Test</button> */}
+    </>
+>>>>>>> 78c8f09c76316983f8bd87cb67d472bbbccdfcc7
   );
-}
+});
