@@ -349,187 +349,6 @@ button {
   color: #ff0000;
 }
 
-/* 하단 메뉴 */
-.bottom-menu {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 72px;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  align-items: center;
-  background: #ffffff;
-  border-top: 1px solid #edf0f5;
-  z-index: 10;
-}
-
-/* 하단 메뉴 버튼 */
-.menu-button {
-  border: 0;
-  background: transparent;
-  color: #8b93a1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-/* 하단 메뉴 아이콘 */
-.menu-button img {
-  width: 24px;
-  height: 24px;
-  opacity: 0.92;
-}
-
-/* 선택된 메뉴 텍스트 색상 */
-.menu-button.active {
-  color: #2864ff;
-}
-
-/* 선택된 메뉴 아이콘 색상 */
-.menu-button.active img {
-  filter: invert(39%) sepia(96%) saturate(2405%) hue-rotate(216deg)
-    brightness(100%);
-}
-
-/* AI 분석 화면 전체 영역 */
-.ai-page {
-  height: 100%;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 22px;
-}
-
-/* AI 로봇과 제목 영역 */
-.ai-hero {
-  width: 100%;
-  text-align: center;
-  padding-top: 2px;
-}
-
-/* AI 로봇 이미지 */
-.ai-robot {
-  width: 135px;
-  height: 135px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto 16px;
-}
-
-/* AI 분석 제목 */
-.ai-hero h2 {
-  margin: 0;
-  font-size: 25px;
-  font-weight: 800;
-  line-height: 1.45;
-  letter-spacing: -0.03em;
-  color: #111827;
-}
-
-/* AI 조언 카드 리스트 */
-.ai-advice-list {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-/* AI 조언 카드 */
-.ai-advice-card {
-  width: 100%;
-  min-height: 135px;
-  padding: 22px 24px;
-  border-radius: 15px;
-  background: #ffffff;
-  border: 1px solid #edf0f5;
-  box-shadow:
-    0 10px 22px rgba(15, 23, 42, 0.06),
-    0 3px 8px rgba(15, 23, 42, 0.04);
-  display: grid;
-  grid-template-columns: 64px 1fr;
-  align-items: center;
-  gap: 18px;
-}
-
-/* AI 조언 카드 아이콘 영역 */
-.ai-advice-icon {
-  width: 58px;
-  height: 58px;
-  display: grid;
-  place-items: center;
-}
-
-/* AI 조언 카드 아이콘 이미지 */
-.ai-advice-icon img {
-  width: 52px;
-  height: 52px;
-  object-fit: contain;
-}
-
-/* 빨간 계열 조언 아이콘 */
-.ai-advice-icon.danger img {
-  filter: invert(17%) sepia(100%) saturate(6051%) hue-rotate(357deg)
-    brightness(100%);
-}
-
-/* 초록 계열 조언 아이콘 */
-.ai-advice-icon.success img {
-  filter: invert(47%) sepia(86%) saturate(500%) hue-rotate(63deg)
-    brightness(92%);
-}
-
-/* AI 조언 텍스트 영역 */
-.ai-advice-content {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-/* AI 조언 제목 */
-.ai-advice-content h3 {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 800;
-  color: #111827;
-  letter-spacing: -0.02em;
-}
-
-/* AI 조언 설명 */
-.ai-advice-content p {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 600;
-  line-height: 1.5;
-  color: #111827;
-}
-
-/* 다시 분석하기 버튼 */
-.ai-analyze-button {
-  width: 100%;
-  height: 64px;
-  margin-top: auto;
-  margin-bottom: 16px;
-  border: 0;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #4c6fff 0%, #3157f4 100%);
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: 800;
-  cursor: pointer;
-  box-shadow: 0 12px 24px rgba(49, 87, 244, 0.28);
-}
-
-/* 다시 분석하기 버튼 클릭 느낌 */
-.ai-analyze-button:active {
-  transform: translateY(1px);
-}
-
 /* 자산 리스트 화면 전체 영역 */
 .asset-list-page {
   height: 100%;
@@ -666,4 +485,160 @@ button {
 /* 지출 금액 */
 .asset-list-price.expense {
   color: #ff3b30;
+}
+
+/* AI 분석 화면 전체 영역 */
+.ai-page {
+  height: 100%;
+  padding: 0 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* 로봇 이미지와 AI 분석 제목 영역 */
+.ai-hero {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 28px;
+}
+
+/* 로봇 이미지 */
+.ai-robot {
+  width: 130px;
+  height: 130px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 14px;
+}
+
+/* AI 분석 제목 */
+.ai-hero h2 {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 800;
+  line-height: 1.45;
+  letter-spacing: -0.03em;
+  color: #111827;
+}
+
+/* AI 분석 결과 리스트 */
+.ai-advice-list {
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* AI 분석 결과 리스트 항목 */
+.ai-advice-list-item {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* AI 응답 카드 */
+.ai-advice-card {
+  width: 100%;
+  min-height: 120px;
+  padding: 22px 24px;
+  border-radius: 15px;
+  background: #ffffff;
+  border: 1px solid rgba(229, 231, 235, 0.9);
+  box-shadow:
+    0 10px 22px rgba(15, 23, 42, 0.06),
+    0 3px 8px rgba(15, 23, 42, 0.04);
+}
+
+/* AI 응답 텍스트 */
+.ai-advice-text {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.65;
+  color: #111827;
+  white-space: pre-line;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* 분석 중 문구 */
+.ai-loading {
+  margin: 40px 0 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: #6b7280;
+}
+
+/* AI 분석 버튼 */
+.ai-analyze-button {
+  width: 100%;
+  height: 64px;
+  margin-top: auto;
+  margin-bottom: 16px;
+  border: 0;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #4c6fff 0%, #3157f4 100%);
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(49, 87, 244, 0.28);
+}
+
+/* 버튼 클릭 느낌 */
+.ai-analyze-button:active {
+  transform: translateY(1px);
+}
+
+/* 하단 메뉴 */
+.bottom-menu {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 72px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  background: #ffffff;
+  border-top: 1px solid #edf0f5;
+  z-index: 10;
+}
+
+/* 하단 메뉴 버튼 */
+.menu-button {
+  border: 0;
+  background: transparent;
+  color: #8b93a1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* 하단 메뉴 아이콘 */
+.menu-button img {
+  width: 24px;
+  height: 24px;
+  opacity: 0.92;
+}
+
+/* 선택된 메뉴 텍스트 색상 */
+.menu-button.active {
+  color: #2864ff;
+}
+
+/* 선택된 메뉴 아이콘 색상 */
+.menu-button.active img {
+  filter: invert(39%) sepia(96%) saturate(2405%) hue-rotate(216deg)
+    brightness(100%);
 }
