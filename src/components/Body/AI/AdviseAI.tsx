@@ -1,36 +1,20 @@
-
-import busIcon from "../../../assets/icons/bus.svg";
-import chartIcon from "../../../assets/icons/chart.svg";
-import forkIcon from "../../../assets/icons/fork.svg";
-
 import React from "react";
 
 import AdviseItem from "./AdviseItem";
 
 export default React.memo(function AdviseAI({ aiArr }: { aiArr: string[] }) {
-  const todayDate = new Date();
   const adviseItem = [];
 
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < Math.min(aiArr.length, 3); i++) {
     adviseItem.push(
-      <li key={i}>
-        <AdviseItem aiArr={aiArr} index={i}/>
+      // [추가] ul/li 기본 점 표시 제거와 카드 간격 적용을 위한 className 추가
+      <li className="ai-advice-list-item" key={i}>
+        {/* [유지] aiArr와 index를 AdviseItem으로 전달하는 기능 흐름 유지 */}
+        <AdviseItem aiArr={aiArr} index={i} />
       </li>,
     );
   }
 
-  return (
-    <>
-      {/* 여기 h3 태그 가운데 정렬 필요! */}
-      <h3>
-        AI가 분석한
-        <br />
-        {todayDate.getMonth() + 1}월 소비 트렌드에요!
-      </h3>
-
-      <ul>{adviseItem}</ul>
-
-      {/* <AdviseItem aiArr={aiArr} /> */}
-    </>
-  );
+  // [수정] Fragment 대신 ul 구조로 정리하고, AI 결과 리스트 스타일 className 추가
+  return <ul className="ai-advice-list">{adviseItem}</ul>;
 });

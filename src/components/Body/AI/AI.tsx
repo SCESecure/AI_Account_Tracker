@@ -1,3 +1,4 @@
+import robotNeutral from "../../../assets/icons/robot_neutral_transparent.svg";
 import robotSmile from "../../../assets/icons/robot_smile_transparent.svg";
 import OpenAI from "openai";
 import { Suspense, useEffect, useState } from "react";
@@ -8,6 +9,7 @@ import type { List } from "../Body";
 // --- API 영역 ---
 // 어차피 유저가 직접 입력하지 않을 것이기 떄문에 prompt injection은 일어나지 않음
 // 또한 API 키도 유저 API 키를 사용하기 때문에 필요 x, 그저 프롬프트만 잘 작성하면 됨
+
 const key = import.meta.env.VITE_OPENAI_API_KEY;
 const systemPrompt =
   "당신은 사용자의 가계부를 보고 지출 상태를 분석하는 분석가이자, 전문가이자, 상담가입니다. \
@@ -76,6 +78,12 @@ export default function AI({ defaultList }: { defaultList: List[] }) {
   const [showAI, setShowAI] = useState<boolean>(false);
   const [aiArr, setAiArr] = useState<string[]>([]);
 
+  const todayDate = new Date();
+
+  const currentMonth = todayDate.getMonth() + 1;
+
+  const hasResult = aiArr.length > 0;
+
   const handleShowAI = (): void => {
     setShowAI(() => !showAI);
     setAiArr([]);
@@ -129,14 +137,50 @@ export default function AI({ defaultList }: { defaultList: List[] }) {
   }, [showAI]);
 
   return (
-    <>
-      {showAI && (
-        <Suspense>
-          {isLoading ? <p>분석 중입니다...</p> : <AdviseAI aiArr={aiArr} />}
+    <section className="ai-page">
+      {!hasResult && (
+        <div className="ai-hero">
+          <img className="ai-robot" src={robotNeutral} alt="AI 대기 로봇" />
+
+          {isLoading ? (
+            <>
+              <h2>AI가 소비 내역을 분석 중이에요!</h2>
+              <p className="ai-guide-text">
+                잠시만 기다려주세요. 입력된 거래 내역을 바탕으로 소비 패턴을
+                확인하고 있어요.
+              </p>
+            </>
+          ) : (
+            <>
+              <h2>AI 분석을 시작해보세요!</h2>
+              <p className="ai-guide-text">
+                버튼을 누르면 지출 내역을 바탕으로 이번 달 소비 습관을
+                분석해드릴게요.
+              </p>
+            </>
+          )}
+        </div>
+      )}
+
+      {hasResult && (
+        <div className="ai-hero">
+          <img className="ai-robot" src={robotSmile} alt="AI 분석 로봇" />
+
+          <h2>
+            AI가 분석한
+            <br />
+            {currentMonth}월 소비 트렌드예요!
+          </h2>
+        </div>
+      )}
+
+      {showAI && !isLoading && (
+        <Suspense fallback={<p className="ai-loading">분석 중입니다...</p>}>
+          <AdviseAI aiArr={aiArr} />
         </Suspense>
       )}
 
-      <ButtonAI handleShowAI={handleShowAI} />
-    </>
+      <ButtonAI handleShowAI={handleShowAI} hasResult={hasResult} />
+    </section>
   );
 }
