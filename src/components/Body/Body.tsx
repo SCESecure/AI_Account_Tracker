@@ -9,12 +9,15 @@ import Stat from "./Stat/Stat";
 // 여기 바뀌었음 계획하지 않은 패키지 추가됨
 import { v4 as uuidv4 } from "uuid";
 
-export interface List {
+export interface Category_List {
+  category: string[];
+}
+
+export interface List extends Category_List {
   id: string;
   year: number;
   month: number;
   day: number;
-  category: string;
   isExpense: boolean; // income일 경우 false, 아닐 경우 true
   price: number;
 }

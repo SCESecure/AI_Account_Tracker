@@ -1,19 +1,30 @@
 import { useState } from "react";
 import CategoryInput from "./CategoryInput";
-import ExpenseInput from "./ExpenseInput";
-import IncomeInput from "./IncomeInput";
+import ValueInput from "./ValueInput";
 
 export default function InputList() {
   const [isCategoryOn, setIsCategoryOn] = useState<boolean>(false);
   const [isIncome, setIsIncome] = useState<boolean>(true);
 
   const handleIsIncome = (): void => {
+    if (!isCategoryOn) {
+      // 값을 입력할 때
+      if (!isIncome) {
+        console.log("Value_Income Mode");
+        setIsIncome(true);
+        return;
+      }
+      console.log("Value_Expense Mode");
+      setIsIncome(false);
+      return;
+    }
+    // 카테고리 화면일 때
     if (!isIncome) {
-      console.log("Income Mode");
+      console.log("Category_Income Mode");
       setIsIncome(true);
       return;
     }
-    console.log("Expense Mode");
+    console.log("Category_Expense Mode");
     setIsIncome(false);
     return;
   };
@@ -34,7 +45,8 @@ export default function InputList() {
       <h3>Hello, InputList Component!</h3>
 
       <button onClick={handleIsCategoryOn}>카테고리</button>
-      {!isCategoryOn && (
+      <div>
+        {isCategoryOn && <strong>카테고리 유형</strong>}
         <div>
           <button onClick={handleIsIncome} disabled={isIncome}>
             수입
@@ -43,11 +55,10 @@ export default function InputList() {
             지출
           </button>
         </div>
-      )}
+      </div>
 
       {isCategoryOn && <CategoryInput />}
-      {!isCategoryOn && <IncomeInput />}
-      {!isCategoryOn && <ExpenseInput />}
+      {!isCategoryOn && <ValueInput />}
     </>
   );
 }
