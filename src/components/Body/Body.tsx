@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { ScreenStatus } from "../../App";
 
 import AI from "./AI/AI";
@@ -17,6 +18,7 @@ export interface List {
   category: string;
   isExpense: boolean; // income일 경우 false, 아닐 경우 true
   price: number;
+  memo: string;
 }
 
 export default function Body({
@@ -36,6 +38,7 @@ export default function Body({
       category: "급여",
       isExpense: false,
       price: 2000000,
+      memo: "6월 급여",
     },
     {
       id: uuidv4(),
@@ -45,6 +48,7 @@ export default function Body({
       category: "급여",
       isExpense: false,
       price: 2000000,
+      memo: "5월 급여",
     },
     {
       id: uuidv4(),
@@ -54,6 +58,7 @@ export default function Body({
       category: "급여",
       isExpense: false,
       price: 1500000,
+      memo: "4월 급여",
     },
     {
       id: uuidv4(),
@@ -63,6 +68,7 @@ export default function Body({
       category: "식비",
       isExpense: true,
       price: -15000,
+      memo: "점심",
     },
     {
       id: uuidv4(),
@@ -72,6 +78,7 @@ export default function Body({
       category: "교통비",
       isExpense: true,
       price: -3000,
+      memo: "4월달 교통비",
     },
     {
       id: uuidv4(),
@@ -81,18 +88,23 @@ export default function Body({
       category: "문화생활",
       isExpense: true,
       price: -20000,
+      memo: "",
     },
   ];
+
+  const [listItem, setListItem] = useState<List[]>(defaultList);
 
   return (
     <main className="body">
       {screen.isHome && (
         <Home defaultList={defaultList} screenHandler={screenHandler} />
       )}
-      {screen.isList && <List defaultList={defaultList} />}
-      {screen.isInput && <Input defaultList={defaultList} />}
+      {screen.isList && <List defaultList={listItem} />}
+      {screen.isInput && (
+        <Input defaultList={listItem} setListItem={setListItem} />
+      )}
       {screen.isStat && <Stat />}
-      {screen.isAI && <AI defaultList={defaultList} />}
+      {screen.isAI && <AI defaultList={listItem} />}
     </main>
   );
 }

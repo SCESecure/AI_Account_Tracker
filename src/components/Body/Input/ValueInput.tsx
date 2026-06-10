@@ -1,18 +1,28 @@
-import { useState } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
 import ReactDatetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import type { List } from "../Body";
+import { v4 as uuidv4 } from "uuid";
 
 // Datetime 관련해서도 claude 사용
 const Datetime = (ReactDatetime as any).default ?? ReactDatetime;
 
-export default function ValueInput({ defaultList }: { defaultList: List[] }) {
+export default function ValueInput({
+  defaultList,
+  isIncome,
+  setListItem,
+}: {
+  defaultList: List[];
+  isIncome: boolean;
+  setListItem: Dispatch<SetStateAction<List[]>>;
+}) {
   const dateFormat = "YYYY-MM-DD";
 
   const [priceValue, setPriceValue] = useState<string>("");
   const [dateValue, setDateValue] = useState<string>("");
   const [isCalActive, setIsCalActive] = useState<boolean>(false);
   const [categoryValue, setCategoryValue] = useState<string>("");
+  const [memoValue, setMemoValue] = useState<string>("");
 
   const getSeparator = () => {
     const regex = /[^0-9a-zA-Z]+/;
@@ -79,6 +89,10 @@ export default function ValueInput({ defaultList }: { defaultList: List[] }) {
     setCategoryValue(e.target.value);
   };
 
+  const handleMemoVal = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
+    setMemoValue(e.target.value);
+  };
+
   // --- 유효성 검사 ---
 
   const validatePrice = (price: string): string | undefined => {
@@ -91,6 +105,53 @@ export default function ValueInput({ defaultList }: { defaultList: List[] }) {
 
   const validateDate = (date: string): string | undefined => {
     if (!date) return "날짜를 입력해주세요.";
+  };
+
+  // -- 추가 함수 ---
+  const createItem = (
+    priceValue: string,
+    categoryValue: string,
+    dateValue: string,
+  ): void => {
+    // uuid 부여
+    const UUID = uuidv4();
+
+    // 데이터 전처리
+    const year = Number(dateValue.slice(0, 4));
+    const month = Number(dateValue.slice(6, 7));
+    const day = Number(dateValue.slice(9, 10));
+
+    setListItem((value) => [
+      ...value,
+      {
+        id: UUID,
+        year: year,
+        month: month,
+        day: day,
+        category: categoryValue,
+        isExpense: !isIncome,
+        price: !isIncome
+          ? Number(priceValue) - Number(priceValue) * 2
+          : Number(priceValue),
+        memo: memoValue,
+      },
+    ]);
+
+    console.log({
+      id: UUID,
+      date: {
+        dateValue: dateValue,
+        year: year,
+        month: month,
+        day: day,
+      },
+      category: categoryValue,
+      isExpense: !isIncome,
+      price: !isIncome
+        ? Number(priceValue) - Number(priceValue) * 2
+        : Number(priceValue),
+      memo: memoValue,
+    });
   };
 
   // --- Submit 핸들러 ---
@@ -116,11 +177,11 @@ export default function ValueInput({ defaultList }: { defaultList: List[] }) {
       return;
     }
 
-    console.log({
-      price: priceValue,
-      category: categoryValue,
-      date: dateValue,
-    });
+    // 리스트에 입력되는 구간
+
+    createItem(priceValue, categoryValue, dateValue);
+
+    console.log("정상 처리되었습니다.");
   };
 
   return (
@@ -173,7 +234,11 @@ export default function ValueInput({ defaultList }: { defaultList: List[] }) {
         </div>
         <div>
           <p>메모 (선택)</p>
-          <textarea placeholder="메모를 입력하세요." />
+          <textarea
+            placeholder="메모를 입력하세요."
+            value={memoValue}
+            onChange={handleMemoVal}
+          />
         </div>
         <div>
           <button type="submit">저장하기</button>

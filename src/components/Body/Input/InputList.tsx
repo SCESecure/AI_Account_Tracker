@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
 import CategoryInput from "./CategoryInput";
 import ValueInput from "./ValueInput";
 import type { List } from "../Body";
 
-export default function InputList({ defaultList }: { defaultList: List[] }) {
+export default function InputList({
+  defaultList,
+  setListItem,
+}: {
+  defaultList: List[];
+  setListItem: Dispatch<SetStateAction<List[]>>;
+}) {
   const [isCategoryOn, setIsCategoryOn] = useState<boolean>(false);
   const [isIncome, setIsIncome] = useState<boolean>(true);
 
@@ -59,7 +65,9 @@ export default function InputList({ defaultList }: { defaultList: List[] }) {
       </div>
 
       {isCategoryOn && <CategoryInput />}
-      {!isCategoryOn && <ValueInput defaultList={defaultList} />}
+      {!isCategoryOn && (
+        <ValueInput defaultList={defaultList} isIncome={isIncome} setListItem={setListItem}/>
+      )}
     </>
   );
 }
