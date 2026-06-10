@@ -4,15 +4,13 @@ import "react-datetime/css/react-datetime.css";
 import type { List } from "../Body";
 import { v4 as uuidv4 } from "uuid";
 
-// Datetime 관련해서도 claude 사용
+// Datetime 관련해서도 claude 사용 (따로 정확한 타입을 지정하지 않고, 타입을 any로 하여금 정의하겠음)
 const Datetime = (ReactDatetime as any).default ?? ReactDatetime;
 
 export default function ValueInput({
-  defaultList,
   isIncome,
   setListItem,
 }: {
-  defaultList: List[];
   isIncome: boolean;
   setListItem: Dispatch<SetStateAction<List[]>>;
 }) {

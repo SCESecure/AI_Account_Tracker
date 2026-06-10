@@ -4,10 +4,8 @@ import ValueInput from "./ValueInput";
 import type { List } from "../Body";
 
 export default function InputList({
-  defaultList,
   setListItem,
 }: {
-  defaultList: List[];
   setListItem: Dispatch<SetStateAction<List[]>>;
 }) {
   const [isCategoryOn, setIsCategoryOn] = useState<boolean>(false);
@@ -49,11 +47,9 @@ export default function InputList({
 
   return (
     <>
-      <h3>Hello, InputList Component!</h3>
-
-      <button onClick={handleIsCategoryOn}>카테고리</button>
+      {/* <button onClick={handleIsCategoryOn}>카테고리</button> */}
       <div>
-        {isCategoryOn && <strong>카테고리 유형</strong>}
+        {/* {isCategoryOn && <strong>카테고리 유형</strong>} */}
         <div>
           <button onClick={handleIsIncome} disabled={isIncome}>
             수입
@@ -64,10 +60,10 @@ export default function InputList({
         </div>
       </div>
 
-      {isCategoryOn && <CategoryInput />}
-      {!isCategoryOn && (
-        <ValueInput defaultList={defaultList} isIncome={isIncome} setListItem={setListItem}/>
-      )}
+      <ValueInput isIncome={isIncome} setListItem={setListItem} />
+
+      {/* {isCategoryOn && <CategoryInput />} */}
+      {/* 카테고리는 시간 관계로 사용자가 직접 입력하는 방식으로 전환 */}
     </>
   );
 }

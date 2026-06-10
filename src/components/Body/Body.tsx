@@ -100,9 +100,7 @@ export default function Body({
         <Home defaultList={defaultList} screenHandler={screenHandler} />
       )}
       {screen.isList && <List defaultList={listItem} />}
-      {screen.isInput && (
-        <Input defaultList={listItem} setListItem={setListItem} />
-      )}
+      {screen.isInput && <Input setListItem={setListItem} />}
       {screen.isStat && <Stat />}
       {screen.isAI && <AI defaultList={listItem} />}
     </main>
