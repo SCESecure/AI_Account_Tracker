@@ -29,7 +29,7 @@ export default function Accounts() {
       <h3>Hello, Accounts Component!</h3>
 
       <AddAccount setAccount={setAccount} />
-      <AccountItem />
+      <AccountItem account={account} />
     </>
   );
 }

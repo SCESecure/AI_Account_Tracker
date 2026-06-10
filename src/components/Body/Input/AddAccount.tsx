@@ -59,11 +59,12 @@ export default function AddAccount({
             type="text"
             value={bank}
             onChange={(e) => setBank(e.target.value)}
+            required
             placeholder="은행명을 입력하세요."
           />
         </div>
         <div>
-          <strong>계좌 이름(선택)</strong>
+          <strong>계좌 이름 (선택)</strong>
           <input
             type="text"
             value={accountName}
@@ -77,6 +78,8 @@ export default function AddAccount({
             type="text"
             value={accountNumber}
             onChange={(e) => setAccountNumber(e.target.value)}
+            required
+            pattern="[0-9]+(-[0-9]+)*"
             placeholder="계좌 번호를 입력하세요."
           />
         </div>
@@ -85,6 +88,8 @@ export default function AddAccount({
           <input
             type="text"
             value={budget}
+            required
+            pattern="^\+?[0-9]+$"
             onChange={(e) => setBudget(Number(e.target.value))}
           />
         </div>
