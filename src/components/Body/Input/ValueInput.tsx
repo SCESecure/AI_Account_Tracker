@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { List } from "../Body";
 
 export default function ValueInput({ defaultList }: { defaultList: List[] }) {
@@ -85,8 +85,8 @@ export default function ValueInput({ defaultList }: { defaultList: List[] }) {
           value={dateValue}
           onChange={handleDateValue}
           placeholder={dateFormat}
+          maxLength={10}
         />
-        <button>(달력)</button>
       </div>
       <div>
         <p>메모 (선택)</p>
