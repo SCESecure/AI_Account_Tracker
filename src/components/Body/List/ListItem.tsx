@@ -10,6 +10,7 @@ export default function ListItem({
   category,
   isExpense,
   price,
+  memo,
 }: ListItemTypes) {
   return (
     <div className="asset-list-item">
@@ -19,6 +20,7 @@ export default function ListItem({
         </p>
 
         <p className="asset-list-category">{category}</p>
+        <p>{memo}</p>
       </div>
 
       <p className={`asset-list-price ${isExpense ? "expense" : "income"}`}>
