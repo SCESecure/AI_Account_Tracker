@@ -28,6 +28,7 @@ export default function Body({
   screen: ScreenStatus;
   screenHandler: (targetScreen: string) => void;
 }) {
+  // 기본 계좌
   // 기본 리스트
   const defaultList: List[] = [
     {

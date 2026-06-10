@@ -10,13 +10,13 @@ export default function AddAccount({
   const [bank, setBank] = useState<string>("");
   const [accountName, setAccountName] = useState<string>("");
   const [accountNumber, setAccountNumber] = useState<string>("");
-  const [budget, setBudget] = useState<number>(0);
+  const [budget, setBudget] = useState<string>("");
 
   const AddAccount = (
     bank: string,
     accountName: string,
     accountNumber: string,
-    budget: number,
+    budget: string,
   ): void => {
     const accountUUID = uuidv4();
 
@@ -27,7 +27,7 @@ export default function AddAccount({
         accountName: accountName,
         accountNumber: accountNumber,
         bank: bank,
-        budget: budget,
+        budget: Number(budget),
       },
     ]);
 
@@ -36,7 +36,7 @@ export default function AddAccount({
       accountName: accountName,
       accountNumber: accountNumber,
       bank: bank,
-      budget: budget,
+      budget: Number(budget),
     });
   };
 
@@ -90,7 +90,7 @@ export default function AddAccount({
             value={budget}
             required
             pattern="^\+?[0-9]+$"
-            onChange={(e) => setBudget(Number(e.target.value))}
+            onChange={(e) => setBudget(e.target.value)}
           />
         </div>
 
