@@ -4,6 +4,7 @@ import ExpenseInput from "./ExpenseInput";
 import IncomeInput from "./IncomeInput";
 
 export default function InputList() {
+  const [isCategoryOn, setIsCategoryOn] = useState<boolean>(false);
   const [isIncome, setIsIncome] = useState<boolean>(true);
 
   const handleIsIncome = (): void => {
@@ -17,20 +18,36 @@ export default function InputList() {
     return;
   };
 
+  const handleIsCategoryOn = (): void => {
+    if (!isCategoryOn) {
+      console.log("Category Screen : On");
+      setIsCategoryOn(true);
+      return;
+    }
+    console.log("Category Screen : Off");
+    setIsCategoryOn(false);
+    return;
+  };
+
   return (
     <>
       <h3>Hello, InputList Component!</h3>
 
-      <button onClick={handleIsIncome} disabled={isIncome}>
-        수입
-      </button>
-      <button onClick={handleIsIncome} disabled={!isIncome}>
-        지출
-      </button>
+      <button onClick={handleIsCategoryOn}>카테고리</button>
+      {!isCategoryOn && (
+        <div>
+          <button onClick={handleIsIncome} disabled={isIncome}>
+            수입
+          </button>
+          <button onClick={handleIsIncome} disabled={!isIncome}>
+            지출
+          </button>
+        </div>
+      )}
 
-      <CategoryInput />
-      <IncomeInput />
-      <ExpenseInput />
+      {isCategoryOn && <CategoryInput />}
+      {!isCategoryOn && <IncomeInput />}
+      {!isCategoryOn && <ExpenseInput />}
     </>
   );
 }
