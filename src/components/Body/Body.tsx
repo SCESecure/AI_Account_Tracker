@@ -9,15 +9,12 @@ import Stat from "./Stat/Stat";
 // 여기 바뀌었음 계획하지 않은 패키지 추가됨
 import { v4 as uuidv4 } from "uuid";
 
-export interface Category_List {
-  category: string[];
-}
-
-export interface List extends Category_List {
+export interface List {
   id: string;
   year: number;
   month: number;
   day: number;
+  category: string;
   isExpense: boolean; // income일 경우 false, 아닐 경우 true
   price: number;
 }
@@ -93,7 +90,7 @@ export default function Body({
         <Home defaultList={defaultList} screenHandler={screenHandler} />
       )}
       {screen.isList && <List defaultList={defaultList} />}
-      {screen.isInput && <Input />}
+      {screen.isInput && <Input defaultList={defaultList} />}
       {screen.isStat && <Stat />}
       {screen.isAI && <AI defaultList={defaultList} />}
     </main>

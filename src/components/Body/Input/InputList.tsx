@@ -1,8 +1,9 @@
 import { useState } from "react";
 import CategoryInput from "./CategoryInput";
 import ValueInput from "./ValueInput";
+import type { List } from "../Body";
 
-export default function InputList() {
+export default function InputList({ defaultList }: { defaultList: List[] }) {
   const [isCategoryOn, setIsCategoryOn] = useState<boolean>(false);
   const [isIncome, setIsIncome] = useState<boolean>(true);
 
@@ -58,7 +59,7 @@ export default function InputList() {
       </div>
 
       {isCategoryOn && <CategoryInput />}
-      {!isCategoryOn && <ValueInput />}
+      {!isCategoryOn && <ValueInput defaultList={defaultList} />}
     </>
   );
 }
