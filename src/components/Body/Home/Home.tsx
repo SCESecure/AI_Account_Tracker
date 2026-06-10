@@ -4,7 +4,13 @@ import FiveList from "./FiveList";
 import Income from "./Income";
 import Total from "./Total";
 
-export default function Home({ defaultList }: { defaultList: List[] }) {
+export default function Home({
+  defaultList,
+  screenHandler,
+}: {
+  defaultList: List[];
+  screenHandler: (targetScreen: string) => void;
+}) {
   const top5list = defaultList.sort(
     (a, b) => Math.abs(b.price) - Math.abs(a.price),
   );
@@ -18,7 +24,7 @@ export default function Home({ defaultList }: { defaultList: List[] }) {
         <Expense defaultList={defaultList} />
       </div>
 
-      <FiveList top5list={top5list} />
+      <FiveList top5list={top5list} screenHandler={screenHandler} />
     </section>
   );
 }

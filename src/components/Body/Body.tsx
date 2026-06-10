@@ -22,7 +22,13 @@ export interface List extends Category_List {
   price: number;
 }
 
-export default function Body({ screen }: { screen: ScreenStatus }) {
+export default function Body({
+  screen,
+  screenHandler,
+}: {
+  screen: ScreenStatus;
+  screenHandler: (targetScreen: string) => void;
+}) {
   // 기본 리스트
   const defaultList: List[] = [
     {
@@ -83,7 +89,9 @@ export default function Body({ screen }: { screen: ScreenStatus }) {
 
   return (
     <main className="body">
-      {screen.isHome && <Home defaultList={defaultList} />}
+      {screen.isHome && (
+        <Home defaultList={defaultList} screenHandler={screenHandler} />
+      )}
       {screen.isList && <List defaultList={defaultList} />}
       {screen.isInput && <Input />}
       {screen.isStat && <Stat />}
