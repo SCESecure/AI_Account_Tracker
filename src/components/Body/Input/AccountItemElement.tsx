@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { AccountType } from "./Accounts";
+import type { AccountType } from "../Body";
 
 export default function AccountItemElement({
   account,

@@ -1,30 +1,16 @@
-import { useState } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 import AccountItem from "./AccountItem";
 import AddAccount from "./AddAccount";
 
-import { v4 as uuidv4 } from "uuid";
+import type { AccountType } from "../Body";
 
-export interface AccountType {
-  id: string;
-  accountName: string;
-  accountNumber: string;
-  bank: string;
-  budget: number;
-}
-
-const defaultAccount: AccountType[] = [
-  {
-    id: uuidv4(),
-    accountName: "메인 계좌",
-    accountNumber: "1234567890",
-    bank: "기업은행",
-    budget: 3140000,
-  },
-];
-
-export default function Accounts() {
-  const [account, setAccount] = useState<AccountType[]>(defaultAccount);
-
+export default function Accounts({
+  account,
+  setAccount,
+}: {
+  account: AccountType[];
+  setAccount: Dispatch<SetStateAction<AccountType[]>>;
+}) {
   const deleteAccount = (id: string): void => {
     if (account.length <= 1) {
       alert("더 이상 계좌를 제거할 수 없습니다.");

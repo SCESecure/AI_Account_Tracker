@@ -1,5 +1,5 @@
+import type { AccountType } from "../Body";
 import AccountItemElement from "./AccountItemElement";
-import type { AccountType } from "./Accounts";
 
 export default function AccountItem({
   account,

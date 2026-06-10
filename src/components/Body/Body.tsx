@@ -10,6 +10,14 @@ import Stat from "./Stat/Stat";
 // 여기 바뀌었음 계획하지 않은 패키지 추가됨
 import { v4 as uuidv4 } from "uuid";
 
+export interface AccountType {
+  id: string;
+  accountName: string;
+  accountNumber: string;
+  bank: string;
+  budget: number;
+}
+
 export interface List {
   id: string;
   year: number;
@@ -29,6 +37,15 @@ export default function Body({
   screenHandler: (targetScreen: string) => void;
 }) {
   // 기본 계좌
+  const defaultAccount: AccountType[] = [
+    {
+      id: uuidv4(),
+      accountName: "메인 계좌",
+      accountNumber: "1234567890",
+      bank: "기업은행",
+      budget: 3140000,
+    },
+  ];
   // 기본 리스트
   const defaultList: List[] = [
     {
@@ -94,14 +111,20 @@ export default function Body({
   ];
 
   const [listItem, setListItem] = useState<List[]>(defaultList);
-
+  const [account, setAccount] = useState<AccountType[]>(defaultAccount);
   return (
     <main className="body">
       {screen.isHome && (
         <Home defaultList={defaultList} screenHandler={screenHandler} />
       )}
       {screen.isList && <List defaultList={listItem} />}
-      {screen.isInput && <Input setListItem={setListItem} />}
+      {screen.isInput && (
+        <Input
+          account={account}
+          setAccount={setAccount}
+          setListItem={setListItem}
+        />
+      )}
       {screen.isStat && <Stat />}
       {screen.isAI && <AI defaultList={listItem} />}
     </main>

@@ -1,6 +1,6 @@
 import { useState, type Dispatch, type SetStateAction } from "react";
-import type { AccountType } from "./Accounts";
 import { v4 as uuidv4 } from "uuid";
+import type { AccountType } from "../Body";
 
 export default function AddAccount({
   setAccount,

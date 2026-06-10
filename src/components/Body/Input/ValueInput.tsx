@@ -1,11 +1,25 @@
-import { useState, type Dispatch, type SetStateAction } from "react";
+import {
+  useState,
+  type ComponentType,
+  type Dispatch,
+  type SetStateAction,
+} from "react";
 import ReactDatetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import type { List } from "../Body";
 import { v4 as uuidv4 } from "uuid";
+import type { Moment } from "moment";
 
-// Datetime 관련해서도 claude 사용 (따로 정확한 타입을 지정하지 않고, 타입을 any로 하여금 정의하겠음)
-const Datetime = (ReactDatetime as any).default ?? ReactDatetime;
+// Datetime 관련해서 claude 사용 (따로 정확한 타입을 지정하지 않고, 타입을 any로 하여금 정의하겠음)
+const Datetime: ComponentType<{
+  input?: boolean;
+  timeFormat?: boolean | string;
+  dateFormat?: boolean | string;
+  value?: string | Date;
+  onChange?: (value: string | Moment) => void;
+}> =
+  (ReactDatetime as unknown as { default: ComponentType }).default ??
+  (ReactDatetime as unknown as ComponentType);
 
 export default function ValueInput({
   isIncome,
