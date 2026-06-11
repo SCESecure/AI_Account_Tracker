@@ -5,7 +5,13 @@ import forkIcon from "../../../assets/icons/fork.svg";
 import busIcon from "../../../assets/icons/bus.svg";
 import giftIcon from "../../../assets/icons/gift.svg";
 
-export default function FiveList({ top5list }: { top5list: List[] }) {
+export default function FiveList({
+  top5list,
+  screenHandler,
+}: {
+  top5list: List[];
+  screenHandler: (targetScreen: string) => void;
+}) {
   const recentList = top5list.slice(0, 5);
 
   //리스트외 항목들 아이콘 추가
@@ -30,7 +36,9 @@ export default function FiveList({ top5list }: { top5list: List[] }) {
       <div className="section-header">
         <h2>최근 거래 내역</h2>
 
-        <button type="button">더보기 &gt;</button>
+        <button type="button" onClick={() => screenHandler("List")}>
+          더보기 &gt;
+        </button>
       </div>
 
       <ul className="transaction-list">
@@ -68,4 +76,3 @@ export default function FiveList({ top5list }: { top5list: List[] }) {
     </section>
   );
 }
-
