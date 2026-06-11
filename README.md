@@ -1,73 +1,76 @@
-# React + TypeScript + Vite
+# AI 가계부
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+이 프로그램은 사용자가 자산이나 소비, 지출 내역을 입력하게 되면, AI가 자동으로 이를 분석하여 사용자에게 조언 해 주는 프로그램입니다.
 
-Currently, two official plugins are available:
+# 프로그램 설치
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+이 프로그램은 React + Vite를 기반으로 만들어진 프로그램입니다.
+따라서 [Node.js 공식 웹사이트](https://nodejs.org/)에서 Node.js를 설치하십시오.
+그 후 프로젝트 내에서 다음 명령어를 입력하십시오.
 
-## React Compiler
+```bash
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+npm install
+npm run dev
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- `npm install` 명령어는 해당 프로그램에 필요한 패키지들을 설치하는 명령어 입니다.
+- `npm run dev` 명령어는 프로그램을 실행하는 명령어입니다.
+- 기본 포트는 5173이며, 따라서 프로그램을 실행한 뒤 웹 브라우저에서 5173 포트로 이동하여 실행하십시오.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## openAI API 연동
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+이 프로그램에는 openAI API key가 필요합니다.
+최상위 폴더에 `.env` 파일을 생성한 뒤 아래와 같이 작성하십시오.
+
 ```
+VITE_OPENAI_API_KEY=(API 키)
+```
+
+# 프로그램 구조
+
+`App.tsx` 컴포넌트를 중심으로 components/ 폴더 안의 컴포넌트들로 하여금 구성됩니다.
+컴포넌트들이 너무 많아서 여러 폴더로 나누어서 구성하였습니다.
+
+- `App.tsx`
+  - components/
+    - `Header.tsx`
+    - Body/
+      - `Body.tsx`
+      - AI/
+        - `AdviseAI.tsx`
+        - `AdviseItem.tsx`
+        - `AI.tsx`
+        - `ButtonAI.tsx`
+      - Home/
+        - `Expense.tsx`
+        - `FiveList.tsx`
+        - `Home.tsx`
+        - `Income.tsx`
+        - `Total.tsx`
+      - Input/
+        - `AccountItem.tsx`
+        - `AccountItemElement.tsx`
+        - `Accounts.tsx`
+        - `AddAccount.tsx`
+        - `Input.tsx`
+        - `InputList.tsx`
+        - `ValueInput.tsx`
+      - List/
+        - `Align.tsx`
+        - `AllList.tsx`
+        - `List.tsx`
+        - `ListItem.tsx`
+    - Menu/
+      - `Menu.tsx`
+      - `MenuButton.tsx`
+
+프로그램에 사용된 모든 svg 파일들은 전부 `src/assets/icons` 에 있습니다.
+
+# 기여자
+
+- SCESecure
+  - 프로젝트 담당, 전체 레이아웃이나 기능 구현, API 연동
+- natoking96
+  - 프로그램 스타일 담당
