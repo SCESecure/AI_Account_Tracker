@@ -1,9 +1,26 @@
 import plusCircleIcon from "../../../assets/icons/plus-circle.svg";
+import type { AccountType, List } from "../Body";
 
-export default function Total() {
+export default function Total({
+  account,
+  defaultList,
+}: {
+  account: AccountType[];
+  defaultList: List[];
+}) {
   const date = new Date();
 
-  const totalAsset = 3140000;
+  let totalAsset = 0;
+
+  // 여기서 전체 계좌의 예산을 끌어옴
+  for (let i = 0; i < account.length; i++) {
+    totalAsset += account[i].budget;
+  }
+
+  // 그 후 여기서 계산
+  for (let i = 0; i < defaultList.length; i++) {
+    totalAsset += defaultList[i].price;
+  }
 
   return (
     <section className="total-card">

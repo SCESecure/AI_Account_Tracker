@@ -115,7 +115,11 @@ export default function Body({
   return (
     <main className="body">
       {screen.isHome && (
-        <Home defaultList={defaultList} screenHandler={screenHandler} />
+        <Home
+          account={account}
+          defaultList={listItem}
+          screenHandler={screenHandler}
+        />
       )}
       {screen.isList && <List defaultList={listItem} />}
       {screen.isInput && (

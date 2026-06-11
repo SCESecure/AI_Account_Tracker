@@ -1,13 +1,15 @@
-import type { List } from "../Body";
+import type { AccountType, List } from "../Body";
 import Expense from "./Expense";
 import FiveList from "./FiveList";
 import Income from "./Income";
 import Total from "./Total";
 
 export default function Home({
+  account,
   defaultList,
   screenHandler,
 }: {
+  account: AccountType[];
   defaultList: List[];
   screenHandler: (targetScreen: string) => void;
 }) {
@@ -17,7 +19,7 @@ export default function Home({
 
   return (
     <section className="home-page">
-      <Total />
+      <Total account={account} defaultList={defaultList} />
 
       <div className="summary-grid">
         <Income defaultList={defaultList} />
