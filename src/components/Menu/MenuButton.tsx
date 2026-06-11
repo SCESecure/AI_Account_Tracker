@@ -3,7 +3,7 @@ import type { ScreenStatus } from "../../App";
 import homeIcon from "../../assets/icons/home.svg";
 import listIcon from "../../assets/icons/list.svg";
 import inputIcon from "../../assets/icons/input.svg";
-import chartIcon from "../../assets/icons/chart.svg";
+// import chartIcon from "../../assets/icons/chart.svg";
 import settingsIcon from "../../assets/icons/settings.svg";
 
 export default function MenuButton({
@@ -42,14 +42,14 @@ export default function MenuButton({
         <span>입력</span>
       </button>
 
-      <button
+      {/* <button
         type="button"
         className={`menu-button ${screen.isStat ? "active" : ""}`}
         onClick={() => screenHandler("Stat")}
       >
         <img src={chartIcon} alt="통계" />
         <span>통계</span>
-      </button>
+      </button> */}
 
       <button
         type="button"

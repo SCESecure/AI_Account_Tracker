@@ -50,8 +50,6 @@ export default function AddAccount({
 
   return (
     <>
-      <h4>Hello, AddAccount Component!</h4>
-
       <form onSubmit={handleSubmit}>
         <div>
           <strong>은행 명</strong>

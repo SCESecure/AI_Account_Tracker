@@ -76,7 +76,6 @@ export default function AccountItemElement({
   };
   return (
     <>
-      <h5>Hello, AccountItemElement Component!</h5>
       <div>
         <strong>은행명</strong>
         {isModify && (

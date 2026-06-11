@@ -1,5 +1,4 @@
 import { useState, type Dispatch, type SetStateAction } from "react";
-import CategoryInput from "./CategoryInput";
 import ValueInput from "./ValueInput";
 import type { List } from "../Body";
 
@@ -8,41 +7,27 @@ export default function InputList({
 }: {
   setListItem: Dispatch<SetStateAction<List[]>>;
 }) {
-  const [isCategoryOn, setIsCategoryOn] = useState<boolean>(false);
+  // const [isCategoryOn, setIsCategoryOn] = useState<boolean>(false);
   const [isIncome, setIsIncome] = useState<boolean>(true);
 
   const handleIsIncome = (): void => {
-    if (!isCategoryOn) {
-      // 값을 입력할 때
-      if (!isIncome) {
-        console.log("Value_Income Mode");
-        setIsIncome(true);
-        return;
-      }
-      console.log("Value_Expense Mode");
-      setIsIncome(false);
-      return;
-    }
-    // 카테고리 화면일 때
     if (!isIncome) {
-      console.log("Category_Income Mode");
+      console.log("Value_Income Mode");
       setIsIncome(true);
       return;
     }
-    console.log("Category_Expense Mode");
+    console.log("Value_Expense Mode");
     setIsIncome(false);
     return;
-  };
-
-  const handleIsCategoryOn = (): void => {
-    if (!isCategoryOn) {
-      console.log("Category Screen : On");
-      setIsCategoryOn(true);
-      return;
-    }
-    console.log("Category Screen : Off");
-    setIsCategoryOn(false);
-    return;
+    // // 카테고리 화면일 때
+    // if (!isIncome) {
+    //   console.log("Category_Income Mode");
+    //   setIsIncome(true);
+    //   return;
+    // }
+    // console.log("Category_Expense Mode");
+    // setIsIncome(false);
+    // return;
   };
 
   return (

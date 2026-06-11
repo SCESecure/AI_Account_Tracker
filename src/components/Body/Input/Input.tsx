@@ -25,7 +25,6 @@ export default function Input({
   };
   return (
     <>
-      <h2>Hello, Input Component!</h2>
 
       <button onClick={handleAccountActive}>
         {isAccountActive ? "수입 및 지출 입력" : "계좌 및 예산 입력"}

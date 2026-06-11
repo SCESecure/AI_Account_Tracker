@@ -45,10 +45,10 @@ export default function App() {
         setScreen({ ...defaultScreen, isInput: true });
         return;
 
-      case "Stat":
-        console.log("MenuButton : Stat 화면 활성");
-        setScreen({ ...defaultScreen, isStat: true });
-        return;
+      // case "Stat":
+      //   console.log("MenuButton : Stat 화면 활성");
+      //   setScreen({ ...defaultScreen, isStat: true });
+      //   return;
 
       case "AI":
         console.log("MenuButton : AI 화면 활성");
