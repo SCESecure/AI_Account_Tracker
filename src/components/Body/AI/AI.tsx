@@ -180,7 +180,11 @@ export default function AI({ defaultList }: { defaultList: List[] }) {
         </Suspense>
       )}
 
-      <ButtonAI handleShowAI={handleShowAI} hasResult={hasResult} />
+      <ButtonAI
+        isLoading={isLoading}
+        handleShowAI={handleShowAI}
+        hasResult={hasResult}
+      />
     </section>
   );
 }
