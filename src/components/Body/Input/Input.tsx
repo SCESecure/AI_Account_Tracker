@@ -27,7 +27,7 @@ export default function Input({
     <section className="input-page">
       <div className="input-card">
         <div className="input-card-header">
-          <h2>{isAccountActive ? "계좌 및 예산 입력" : "자산 입력"}</h2>
+          <h2>{isAccountActive ? "계좌 및 예산 입력" : "내역 입력"}</h2>
 
           <button
             className="input-setting-button"
@@ -35,7 +35,7 @@ export default function Input({
             type="button"
             aria-label={
               isAccountActive
-                ? "자산 입력으로 이동"
+                ? "내역 입력으로 이동"
                 : "계좌 및 예산 입력으로 이동"
             }
           >
