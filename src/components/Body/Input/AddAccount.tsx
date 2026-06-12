@@ -40,8 +40,37 @@ export default function AddAccount({
     });
   };
 
+  const validateBank = (bank: string): string | undefined => {
+    if (!bank) return "은행 명을 입력해주세요.";
+  };
+
+  const validateAccountNumber = (accountNumber: string): string | undefined => {
+    if (!accountNumber) return "계좌번호를 입력해주세요.";
+  };
+
+  const validateBudget = (budget: string): string | undefined => {
+    if (!budget) return "초기 금액(예산)을 입력해주세요.";
+  };
+
   const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>): void => {
     e.preventDefault();
+
+    const bankError = validateBank(bank);
+    const accountNumberError = validateAccountNumber(accountNumber);
+    const budgetError = validateBudget(budget);
+
+    if (bankError) {
+      alert(bankError);
+      return;
+    }
+    if (accountNumberError) {
+      alert(accountNumberError);
+      return;
+    }
+    if (budgetError) {
+      alert(budgetError);
+      return;
+    }
 
     AddAccount(bank, accountName, accountNumber, budget);
 
@@ -63,7 +92,9 @@ export default function AddAccount({
       </div>
 
       <div className="account-field-group">
-        <label className="account-label">계좌 이름 <span>(선택)</span></label>
+        <label className="account-label">
+          계좌 이름 <span>(선택)</span>
+        </label>
         <input
           className="account-input"
           type="text"
@@ -87,7 +118,7 @@ export default function AddAccount({
       </div>
 
       <div className="account-field-group">
-        <label className="account-label">초기금액</label>
+        <label className="account-label">초기금액(예산)</label>
 
         <div className="account-money-box">
           <input

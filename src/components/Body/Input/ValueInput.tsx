@@ -195,7 +195,7 @@ export default function ValueInput({
 
     createItem(priceValue, categoryValue, dateValue);
 
-    console.log("정상 처리되었습니다.");
+    console.log("내역이 정상 처리되었습니다.");
   };
 
   return (
