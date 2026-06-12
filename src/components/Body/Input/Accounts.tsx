@@ -37,13 +37,13 @@ export default function Accounts({
   };
 
   return (
-    <>
+    <section className="account-page">
       <AddAccount setAccount={setAccount} />
       <AccountItem
         account={account}
         deleteAccount={deleteAccount}
         modifyAccount={modifyAccount}
       />
-    </>
+    </section>
   );
 }

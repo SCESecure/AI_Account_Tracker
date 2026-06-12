@@ -17,7 +17,7 @@ export default function AccountItem({
   ) => void;
 }) {
   return (
-    <>
+    <div className="account-list">
       {account.map((account) => (
         <AccountItemElement
           key={account.id}
@@ -26,6 +26,6 @@ export default function AccountItem({
           modifyAccount={modifyAccount}
         />
       ))}
-    </>
+    </div>
   );
 }

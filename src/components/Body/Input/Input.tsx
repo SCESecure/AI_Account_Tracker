@@ -24,15 +24,31 @@ export default function Input({
     return;
   };
   return (
-    <>
+    <section className="input-page">
+      <div className="input-card">
+        <div className="input-card-header">
+          <h2>{isAccountActive ? "계좌 및 예산 입력" : "자산 입력"}</h2>
 
-      <button onClick={handleAccountActive}>
-        {isAccountActive ? "수입 및 지출 입력" : "계좌 및 예산 입력"}
-      </button>
-      {isAccountActive && (
-        <Accounts account={account} setAccount={setAccount} />
-      )}
-      {!isAccountActive && <InputList setListItem={setListItem} />}
-    </>
+          <button
+            className="input-setting-button"
+            onClick={handleAccountActive}
+            type="button"
+            aria-label={
+              isAccountActive
+                ? "자산 입력으로 이동"
+                : "계좌 및 예산 입력으로 이동"
+            }
+          >
+            ⚙
+          </button>
+        </div>
+
+        {isAccountActive && (
+          <Accounts account={account} setAccount={setAccount} />
+        )}
+
+        {!isAccountActive && <InputList setListItem={setListItem} />}
+      </div>
+    </section>
   );
 }

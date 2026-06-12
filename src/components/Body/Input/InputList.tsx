@@ -33,13 +33,23 @@ export default function InputList({
   return (
     <>
       {/* <button onClick={handleIsCategoryOn}>카테고리</button> */}
-      <div>
+      <div className="input-form">
         {/* {isCategoryOn && <strong>카테고리 유형</strong>} */}
-        <div>
-          <button onClick={handleIsIncome} disabled={isIncome}>
+        <div className="input-type-tabs">
+          <button
+            className={`input-type-button ${isIncome ? "active" : ""}`}
+            onClick={handleIsIncome}
+            disabled={isIncome}
+            type="button"
+          >
             수입
           </button>
-          <button onClick={handleIsIncome} disabled={!isIncome}>
+          <button
+            className={`input-type-button ${!isIncome ? "active" : ""}`}
+            onClick={handleIsIncome}
+            disabled={!isIncome}
+            type="button"
+          >
             지출
           </button>
         </div>

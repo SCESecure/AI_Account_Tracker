@@ -10,6 +10,8 @@ import type { List } from "../Body";
 import { v4 as uuidv4 } from "uuid";
 import type { Moment } from "moment";
 
+import calendarIcon from "../../../assets/icons/calendar.svg";
+
 // Datetime 관련해서 claude 사용 (따로 정확한 타입을 지정하지 않고, 타입을 any로 하여금 정의하겠음)
 const Datetime: ComponentType<{
   input?: boolean;
@@ -197,11 +199,17 @@ export default function ValueInput({
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <p>금액</p>
+    <form className="value-input-form" onSubmit={handleSubmit}>
+      {/* 금액 입력 */}
+      <div className="input-field-group">
+        <label className="input-label" htmlFor="asset-price">
+          금액
+        </label>
+
+        <div className="input-money-box">
           <input
+            id="asset-price"
+            className="input-text"
             type="text"
             value={priceValue}
             onChange={handlePriceValue}
@@ -209,32 +217,64 @@ export default function ValueInput({
             required
             pattern="^\+?[0-9]+$"
           />
-          <p>원</p>
-          {/* <button type="button">(계산기)</button> */}
-          {/* 계산기 구현은 좀 힘들 것 같음 */}
+          <span className="input-unit">원</span>
         </div>
-        <div>
-          <p>카테고리</p>
+
+        {/* <button type="button">(계산기)</button> */}
+        {/* 계산기 구현은 좀 힘들 것 같음 */}
+      </div>
+
+      {/* 카테고리 입력 */}
+      <div className="input-field-group">
+        <label className="input-label" htmlFor="asset-category">
+          카테고리
+        </label>
+
+        <div className="input-category-box">
           <input
+            id="asset-category"
+            className="input-text"
             type="text"
             value={categoryValue}
             onChange={handleCategoryVal}
             placeholder="카테고리를 입력하세요."
           />
         </div>
-        <div>
-          <p>날짜</p>
+      </div>
+
+      {/* 날짜 입력 */}
+      <div className="input-field-group">
+        <label className="input-label" htmlFor="asset-date">
+          날짜
+        </label>
+
+        <div className="input-date-box">
           <input
+            id="asset-date"
+            className="input-text"
             type="text"
             value={dateValue}
             onChange={handleDateValue}
             placeholder={dateFormat}
             maxLength={10}
           />
-          <button type="button" onClick={() => setIsCalActive(!isCalActive)}>
-            (캘린더)
+
+          <button
+            className="input-calendar-button"
+            type="button"
+            onClick={() => setIsCalActive(!isCalActive)}
+            aria-label="날짜 선택"
+          >
+            <img
+              className="input-calendar-icon"
+              src={calendarIcon}
+              alt="날짜 선택"
+            />
           </button>
-          {isCalActive && (
+        </div>
+
+        {isCalActive && (
+          <div className="input-calendar-panel">
             <Datetime
               input={false}
               timeFormat={false}
@@ -242,20 +282,31 @@ export default function ValueInput({
               value={dateValue}
               onChange={handleChangeCal}
             />
-          )}
-        </div>
-        <div>
-          <p>메모 (선택)</p>
-          <textarea
-            placeholder="메모를 입력하세요."
-            value={memoValue}
-            onChange={handleMemoVal}
-          />
-        </div>
-        <div>
-          <button type="submit">저장하기</button>
-        </div>
-      </form>
-    </>
+          </div>
+        )}
+      </div>
+
+      {/* 메모 입력 */}
+      <div className="input-field-group">
+        <label className="input-label" htmlFor="asset-memo">
+          메모 <span>(선택)</span>
+        </label>
+
+        <textarea
+          id="asset-memo"
+          className="input-memo"
+          placeholder="메모를 입력하세요."
+          value={memoValue}
+          onChange={handleMemoVal}
+        />
+      </div>
+
+      {/* 저장 버튼 */}
+      <div>
+        <button className="input-save-button" type="submit">
+          저장하기
+        </button>
+      </div>
+    </form>
   );
 }

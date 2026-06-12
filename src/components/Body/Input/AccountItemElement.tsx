@@ -75,57 +75,94 @@ export default function AccountItemElement({
     }
   };
   return (
-    <>
-      <div>
-        <strong>은행명</strong>
+    <article className="account-card">
+      <div className="account-card-row">
+        <strong className="account-card-label">은행명</strong>
+
         {isModify && (
           <input
+            className="account-card-input"
             value={modifyBank}
             onChange={(e) => setModifyBank(e.target.value)}
             type="text"
-          ></input>
+          />
         )}
-        {!isModify && <p>{account.bank}</p>}
+
+        {!isModify && <p className="account-card-value">{account.bank}</p>}
       </div>
+
       {account.accountName.length > 0 && (
-        <div>
-          <strong>계좌명</strong>
+        <div className="account-card-row">
+          <strong className="account-card-label">계좌명</strong>
+
           {isModify && (
             <input
+              className="account-card-input"
               value={modifyAccountName}
               onChange={(e) => setModifyAccountName(e.target.value)}
               type="text"
-            ></input>
+            />
           )}
-          {!isModify && <p>{account.accountName}</p>}
+
+          {!isModify && (
+            <p className="account-card-value">{account.accountName}</p>
+          )}
         </div>
       )}
-      <div>
-        <strong>계좌번호</strong>
+
+      <div className="account-card-row">
+        <strong className="account-card-label">계좌번호</strong>
+
         {isModify && (
           <input
+            className="account-card-input"
             value={modifyAccountNumber}
             onChange={(e) => setModifyAccountNumber(e.target.value)}
             type="text"
-          ></input>
+          />
         )}
-        {!isModify && <p>{account.accountNumber}</p>}
+
+        {!isModify && (
+          <p className="account-card-value">{account.accountNumber}</p>
+        )}
       </div>
-      <div>
-        <strong>초기 금액(예산)</strong>
+
+      <div className="account-card-row">
+        <strong className="account-card-label">초기금액</strong>
+
         {isModify && (
           <input
+            className="account-card-input"
             value={modifyBudget}
             onChange={(e) => setModifyBudget(Number(e.target.value))}
             type="text"
-          ></input>
+          />
         )}
-        {!isModify && <p>{account.budget}원</p>}
+
+        {!isModify && (
+          <p className="account-card-value">
+            {Number(account.budget).toLocaleString("ko-KR")}원
+          </p>
+        )}
       </div>
-      <div>
-        <button onClick={handleModifyAccount}>(수정)</button>
-        <button onClick={() => deleteAccount(account.id)}>(삭제)</button>
+
+      <div className="account-card-actions">
+        <button
+          className="account-edit-button"
+          type="button"
+          onClick={handleModifyAccount}
+        >
+          수정
+        </button>
+
+        <button
+          className="account-delete-button"
+          type="button"
+          onClick={() => deleteAccount(account.id)}
+        >
+          삭제
+        </button>
       </div>
-    </>
+    </article>
   );
 }

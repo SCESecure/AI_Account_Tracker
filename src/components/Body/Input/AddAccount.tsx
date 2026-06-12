@@ -49,51 +49,63 @@ export default function AddAccount({
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <strong>은행 명</strong>
+    <form className="account-add-form" onSubmit={handleSubmit}>
+      <div className="account-field-group">
+        <label className="account-label">은행명</label>
+        <input
+          className="account-input"
+          type="text"
+          value={bank}
+          onChange={(e) => setBank(e.target.value)}
+          required
+          placeholder="은행명을 입력하세요"
+        />
+      </div>
+
+      <div className="account-field-group">
+        <label className="account-label">계좌 이름 <span>(선택)</span></label>
+        <input
+          className="account-input"
+          type="text"
+          value={accountName}
+          onChange={(e) => setAccountName(e.target.value)}
+          placeholder="계좌 이름을 입력하세요"
+        />
+      </div>
+
+      <div className="account-field-group">
+        <label className="account-label">계좌번호</label>
+        <input
+          className="account-input"
+          type="text"
+          value={accountNumber}
+          onChange={(e) => setAccountNumber(e.target.value)}
+          required
+          pattern="[0-9]+(-[0-9]+)*"
+          placeholder="계좌 번호를 입력하세요"
+        />
+      </div>
+
+      <div className="account-field-group">
+        <label className="account-label">초기금액</label>
+
+        <div className="account-money-box">
           <input
-            type="text"
-            value={bank}
-            onChange={(e) => setBank(e.target.value)}
-            required
-            placeholder="은행명을 입력하세요."
-          />
-        </div>
-        <div>
-          <strong>계좌 이름 (선택)</strong>
-          <input
-            type="text"
-            value={accountName}
-            onChange={(e) => setAccountName(e.target.value)}
-            placeholder="계좌 이름을 입력하세요."
-          />
-        </div>
-        <div>
-          <strong>계좌 번호</strong>
-          <input
-            type="text"
-            value={accountNumber}
-            onChange={(e) => setAccountNumber(e.target.value)}
-            required
-            pattern="[0-9]+(-[0-9]+)*"
-            placeholder="계좌 번호를 입력하세요."
-          />
-        </div>
-        <div>
-          <strong>초기 금액(예산)</strong>
-          <input
+            className="account-input account-money-input"
             type="text"
             value={budget}
             required
             pattern="^\+?[0-9]+$"
             onChange={(e) => setBudget(e.target.value)}
+            placeholder="0"
           />
+          <span className="account-money-unit">원</span>
         </div>
+      </div>
 
-        <button type="submit">+</button>
-      </form>
-    </>
+      <button className="account-add-button" type="submit">
+        +
+      </button>
+    </form>
   );
 }

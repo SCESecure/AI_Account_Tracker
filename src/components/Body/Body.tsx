@@ -5,7 +5,6 @@ import AI from "./AI/AI";
 import Home from "./Home/Home";
 import Input from "./Input/Input";
 import List from "./List/List";
-import Stat from "./Stat/Stat";
 
 // 여기 바뀌었음 계획하지 않은 패키지 추가됨
 import { v4 as uuidv4 } from "uuid";
@@ -129,7 +128,6 @@ export default function Body({
           setListItem={setListItem}
         />
       )}
-      {screen.isStat && <Stat />}
       {screen.isAI && <AI defaultList={listItem} />}
     </main>
   );
