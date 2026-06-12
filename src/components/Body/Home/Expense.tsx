@@ -27,25 +27,46 @@ export default function Expense({ defaultList }: { defaultList: List[] }) {
   for (let i = 0; i < defaultList.length; i++) {
     if (defaultList[i].isExpense) {
       if (defaultList[i].month === todayDate.getMonth() + 1) {
-        thisMonthTotal += defaultList[i].price;
+        thisMonthTotal += Math.abs(defaultList[i].price);
       }
+
       if (defaultList[i].month === todayDate.getMonth()) {
-        lastMonthTotal += defaultList[i].price;
+        lastMonthTotal += Math.abs(defaultList[i].price);
       }
     }
   }
 
-  const expensePercent = (1 - thisMonthTotal / lastMonthTotal) * 100;
+  const expensePercent =
+    lastMonthTotal === 0
+      ? thisMonthTotal === 0
+        ? 0
+        : 100
+      : (thisMonthTotal / lastMonthTotal - 1) * 100;
+
+  const isGoodExpenseBox =
+    thisMonthTotal === 0 || thisMonthTotal <= lastMonthTotal;
+
+  const expenseCardClassName = `summary-card ${
+    isGoodExpenseBox ? "income-card" : "expense-card"
+  }`;
+
+  const expenseRateClassName = `summary-rate ${
+    isGoodExpenseBox ? "up" : "down"
+  }`;
 
   return (
-    <>
-      <div>
-        <p>총 지출</p>
-        {/* 여기는 리스트에서 가져와야 함 */}
-        <p>-{thisMonthTotal - lastMonthTotal}원</p>
-        <p>-{Math.round(expensePercent * 100) / 100}%</p>
-        <p>지난달 대비</p>
-      </div>
-    </>
+    <article className={expenseCardClassName}>
+      <p className="summary-title">월 지출</p>
+
+      {/* 여기는 리스트에서 가져와야 함 */}
+      <strong>{thisMonthTotal.toLocaleString("ko-KR")}원</strong>
+
+      <p className={expenseRateClassName}>
+        {expensePercent > 0 ? "▲" : "▼"}{" "}
+        {Math.abs(Math.round(expensePercent * 100) / 100)}%
+      </p>
+
+      <p className="summary-caption">지난달 대비</p>
+    </article>
   );
 }

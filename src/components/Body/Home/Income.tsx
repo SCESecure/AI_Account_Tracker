@@ -33,17 +33,36 @@ export default function Income({ defaultList }: { defaultList: List[] }) {
     }
   }
 
-  const incomePercent = (thisMonthTotal / lastMonthTotal - 1) * 100;
+  const incomePercent =
+    lastMonthTotal === 0
+      ? thisMonthTotal === 0
+        ? 0
+        : 100
+      : (thisMonthTotal / lastMonthTotal - 1) * 100;
+
+  const isPositiveIncomeBox = thisMonthTotal === 0 || incomePercent >= 0;
+
+  const incomeCardClassName = `summary-card ${
+    isPositiveIncomeBox ? "income-card" : "expense-card"
+  }`;
+
+  const incomeRateClassName = `summary-rate ${
+    isPositiveIncomeBox ? "up" : "down"
+  }`;
 
   return (
-    <>
-      <div>
-        <p>총 수입</p>
-        {/* 여기는 리스트에서 가져와야 함 */}
-        <p>+{thisMonthTotal - lastMonthTotal}원</p>
-        <p>+{Math.round(incomePercent * 100) / 100}%</p>
-        <p>지난달 대비</p>
-      </div>
-    </>
+    <article className={incomeCardClassName}>
+      <p className="summary-title">월 수입</p>
+
+      {/* 여기는 리스트에서 가져와야 함 */}
+      <strong>{thisMonthTotal.toLocaleString("ko-KR")}원</strong>
+
+      <p className={incomeRateClassName}>
+        {incomePercent >= 0 ? "▲" : "▼"}{" "}
+        {Math.abs(Math.round(incomePercent * 100) / 100)}%
+      </p>
+
+      <p className="summary-caption">지난달 대비</p>
+    </article>
   );
 }

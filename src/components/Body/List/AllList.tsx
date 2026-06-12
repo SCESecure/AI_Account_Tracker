@@ -3,12 +3,10 @@ import ListItem from "./ListItem";
 
 export default function AllList({ dateSearched }: { dateSearched: List[] }) {
   return (
-    <>
-      <div className="list_wrapper">
-        {dateSearched.map((item) => (
-          <ListItem key={item.id} {...item} />
-        ))}
-      </div>
-    </>
+    <div className="asset-list-items">
+      {dateSearched.map((item) => (
+        <ListItem key={item.id} {...item} />
+      ))}
+    </div>
   );
 }

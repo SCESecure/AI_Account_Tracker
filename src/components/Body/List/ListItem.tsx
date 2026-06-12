@@ -10,14 +10,23 @@ export default function ListItem({
   category,
   isExpense,
   price,
+  memo,
 }: ListItemTypes) {
   return (
-    <>
-      <p>
-        {month}월 {day}일
+    <div className="asset-list-item">
+      <div className="asset-list-item-left">
+        <p className="asset-list-date-text">
+          {month}월 {day}일
+        </p>
+
+        <p className="asset-list-category">{category}</p>
+        <p>{memo}</p>
+      </div>
+
+      <p className={`asset-list-price ${isExpense ? "expense" : "income"}`}>
+        {isExpense ? "-" : "+"}
+        {Math.abs(price).toLocaleString("ko-KR")}원
       </p>
-      <p>{category}</p>
-      <p>{isExpense ? price : "+" + price}</p>
-    </>
+    </div>
   );
 }

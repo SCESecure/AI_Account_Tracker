@@ -1,7 +1,9 @@
+/* 모든 요소의 크기 계산 방식을 border-box로 통일 */
 * {
   box-sizing: border-box;
 }
 
+/* 브라우저 기본 여백 제거 및 전체 높이 설정 */
 html,
 body,
 #root {
@@ -10,6 +12,7 @@ body,
   margin: 0;
 }
 
+/* 전체 배경색과 기본 글꼴 설정 */
 body {
   background: #eef2f7;
   font-family:
@@ -21,6 +24,7 @@ body {
   color: #111827;
 }
 
+/* React 앱을 브라우저 화면 중앙에 배치 */
 #root {
   min-height: 100vh;
   display: flex;
@@ -28,10 +32,12 @@ body {
   align-items: center;
 }
 
+/* 버튼이 부모 요소의 글꼴을 그대로 사용하도록 설정 */
 button {
   font: inherit;
 }
 
+/* 앱 전체를 감싸는 흰색 화면 박스 */
 .app-shell {
   width: 760px;
   height: 1050px;
@@ -42,18 +48,44 @@ button {
   box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
 }
 
+/* 상단 제목 영역 */
+.header {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: #ffffff;
+}
+
+/* 상단 제목 텍스트 */
+.header h1 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  text-align: center;
+}
+
+/* Header와 하단 메뉴를 제외한 중앙 본문 영역 */
 .body {
-  height: calc(1050px - 72px);
-  padding: 48px 48px 0;
+  height: calc(1050px - 76px - 72px);
+  padding: 28px 48px 0;
   overflow: hidden;
 }
 
+/* ============================= */
+/* 홈 화면 */
+/* ============================= */
+
+/* 홈 화면 전체 세로 배치 */
 .home-page {
   display: flex;
   flex-direction: column;
   gap: 18px;
 }
 
+/* 총 자산 파란 카드 */
 .total-card {
   height: 250px;
   padding: 26px 30px;
@@ -65,6 +97,7 @@ button {
   grid-template-rows: auto 1fr auto;
 }
 
+/* 총 자산 제목과 + 아이콘 영역 */
 .total-title {
   display: flex;
   align-items: center;
@@ -74,12 +107,19 @@ button {
   opacity: 0.95;
 }
 
+/* Total.tsx 안의 p 태그 기본 여백 제거 */
+.total-title p {
+  margin: 0;
+}
+
+/* 총 자산 + 아이콘 */
 .total-title img {
   width: 21px;
   height: 21px;
   filter: brightness(0) invert(1);
 }
 
+/* 총 자산 금액 */
 .total-card strong {
   display: flex;
   align-items: center;
@@ -91,7 +131,8 @@ button {
   letter-spacing: -0.04em;
 }
 
-.total-card p {
+/* 총 자산 기준 날짜 */
+.total-card > p {
   margin: 0;
   text-align: center;
   font-size: 17px;
@@ -99,12 +140,14 @@ button {
   opacity: 0.9;
 }
 
+/* 월 수입 / 월 지출 2열 배치 */
 .summary-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
 }
 
+/* 월 수입 / 월 지출 카드 공통 디자인 */
 .summary-card {
   height: 170px;
   padding: 20px 18px;
@@ -114,60 +157,71 @@ button {
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
 }
 
+/* 초록색 요약 카드 배경 */
 .income-card {
   background: rgba(226, 246, 217, 0.72);
   backdrop-filter: blur(8px);
 }
 
+/* 빨간색 요약 카드 배경 */
 .expense-card {
   background: rgba(255, 234, 234, 0.72);
   backdrop-filter: blur(8px);
 }
 
+/* 월 수입 / 월 지출 제목 */
 .summary-title {
   margin: 0;
   font-weight: 800;
   font-size: 18px;
 }
 
+/* 초록색 카드 제목 */
 .income-card .summary-title {
   color: #2b8a1f;
 }
 
+/* 빨간색 카드 제목 */
 .expense-card .summary-title {
   color: #ef1b1b;
 }
 
+/* 월 수입 / 월 지출 금액 */
 .summary-card strong {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   margin: 0;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 800;
   letter-spacing: -0.03em;
 }
 
+/* 지난달 대비 퍼센트 공통 */
 .summary-rate {
   margin: 0;
   font-weight: 800;
   font-size: 15px;
 }
 
+/* 양수 또는 좋은 변화일 때 퍼센트 색상 */
 .summary-rate.up {
   color: #36a028;
 }
 
+/* 음수 또는 나쁜 변화일 때 퍼센트 색상 */
 .summary-rate.down {
   color: #ef1b1b;
 }
 
+/* 지난달 대비 문구 */
 .summary-caption {
   margin: 0;
   font-size: 14px;
   color: #222;
 }
 
+/* 최근 거래 내역 전체 반투명 카드 */
 .recent-section {
   margin-top: 0;
   padding: 14px 14px 12px;
@@ -180,6 +234,7 @@ button {
     inset 0 1px 0 rgba(255, 255, 255, 0.55);
 }
 
+/* 최근 거래 내역 제목과 더보기 버튼 영역 */
 .section-header {
   display: flex;
   align-items: center;
@@ -187,12 +242,14 @@ button {
   margin: 0 0 10px;
 }
 
+/* 최근 거래 내역 제목 */
 .section-header h2 {
   margin: 0;
   font-size: 19px;
   font-weight: 800;
 }
 
+/* 더보기 버튼 */
 .section-header button {
   border: 0;
   background: transparent;
@@ -203,6 +260,7 @@ button {
   padding: 0;
 }
 
+/* 최근 거래 리스트 */
 .transaction-list {
   list-style: none;
   margin: 0;
@@ -212,6 +270,7 @@ button {
   gap: 8px;
 }
 
+/* 거래 내역 한 줄 카드 */
 .transaction-item {
   display: grid;
   grid-template-columns: 38px 1fr auto;
@@ -226,6 +285,7 @@ button {
   border: 1px solid rgba(229, 231, 235, 0.85);
 }
 
+/* 거래 아이콘 원형 배경 */
 .transaction-icon {
   width: 38px;
   height: 38px;
@@ -238,37 +298,44 @@ button {
     0 4px 8px rgba(15, 23, 42, 0.05);
 }
 
+/* 거래 아이콘 이미지 */
 .transaction-icon img {
   width: 25px;
   height: 25px;
 }
 
+/* 수입 거래 아이콘 색상 */
 .transaction-icon.income img {
   filter: invert(47%) sepia(86%) saturate(500%) hue-rotate(63deg)
     brightness(92%);
 }
 
+/* 지출 거래 아이콘 색상 */
 .transaction-icon.expense img {
   filter: invert(17%) sepia(100%) saturate(6051%) hue-rotate(357deg)
     brightness(100%);
 }
 
+/* 거래 이름과 날짜 영역 */
 .transaction-info {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
+/* 거래 이름 */
 .transaction-info strong {
   font-size: 15px;
   font-weight: 700;
 }
 
+/* 거래 날짜 */
 .transaction-info span {
   font-size: 12px;
   color: #475569;
 }
 
+/* 거래 금액 공통 */
 .transaction-price {
   font-size: 14px;
   font-weight: 800;
@@ -276,14 +343,330 @@ button {
   align-self: center;
 }
 
+/* 수입 금액 색상 */
 .transaction-price.income {
   color: #14a014;
 }
 
+/* 지출 금액 색상 */
 .transaction-price.expense {
   color: #ff0000;
 }
 
+/* ============================= */
+/* 자산 리스트 화면 */
+/* ============================= */
+
+/* 자산 리스트 화면 전체 영역 */
+.asset-list-page {
+  height: 100%;
+  padding: 0 42px;
+  overflow: hidden;
+}
+
+/* 날짜 선택 / 정렬 버튼 전체 영역 */
+.asset-list-control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 36px;
+}
+
+/* 년월 선택 영역 */
+.asset-list-date {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* 년월 텍스트 */
+.asset-list-date p {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: #111827;
+}
+
+/* 년월 이동 버튼 */
+.asset-list-date button {
+  border: 0;
+  background: transparent;
+  color: #111827;
+  font-size: 30px;
+  font-weight: 900;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* 비활성화된 다음달 버튼 */
+.asset-list-date button:disabled {
+  color: #cbd5e1;
+  cursor: default;
+}
+
+/* 정렬 버튼 묶음 */
+.asset-list-sort-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* 최신순 / 지출순 / 오름차순 / 내림차순 버튼 */
+.asset-list-sort-box button {
+  border: 0;
+  background: transparent;
+  color: #111827;
+  font-size: 19px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* 기존 list_wrapper를 유지하면서 리스트 전체 디자인 적용 */
+.list_wrapper.asset-list-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+/* 리스트 전체 영역 */
+.asset-list-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+/* 거래 내역 한 줄 - 입체감 카드 형태 */
+.asset-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 22px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(229, 231, 235, 0.9);
+  box-shadow:
+    0 8px 18px rgba(15, 23, 42, 0.06),
+    0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+/* 날짜와 카테고리 영역 */
+.asset-list-item-left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 날짜 텍스트 */
+.asset-list-date-text {
+  margin: 0;
+  color: #3867ff;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+/* 카테고리 텍스트 */
+.asset-list-category {
+  margin: 0;
+  color: #111827;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+/* 금액 공통 */
+.asset-list-price {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  align-self: center;
+}
+
+/* 수입 금액 */
+.asset-list-price.income {
+  color: #23a323;
+}
+
+/* 지출 금액 */
+.asset-list-price.expense {
+  color: #ff3b30;
+}
+
+/* ============================= */
+/* AI 분석 화면 */
+/* ============================= */
+
+/* AI 분석 화면 전체 영역 */
+.ai-page {
+  height: 100%;
+  padding: 0 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* 로봇 이미지와 AI 분석 제목 영역 */
+.ai-hero {
+  width: 100%;
+  text-align: center;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+/* 로봇 이미지 크기와 정렬 */
+.ai-robot {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 14px;
+}
+
+/* AI 분석 제목 스타일 */
+.ai-hero h2 {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 800;
+  line-height: 1.45;
+  letter-spacing: -0.03em;
+  color: #111827;
+}
+
+/* 분석 전 / 분석 중 안내 문구 */
+.ai-guide-text {
+  width: 100%;
+  max-width: 470px;
+  margin: 14px auto 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.6;
+  color: #4b5563;
+  word-break: keep-all;
+}
+
+/* AI 분석 결과 리스트 영역 */
+.ai-advice-list {
+  width: 100%;
+  max-height: 460px;
+  list-style: none;
+  margin: 0;
+  padding: 0 10px 18px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  overflow-y: auto;
+}
+
+/* 스크롤바 디자인 */
+.ai-advice-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* 스크롤바 배경 */
+.ai-advice-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* 스크롤바 손잡이 */
+.ai-advice-list::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.55);
+  border-radius: 999px;
+}
+
+/* li 기본 여백과 점 제거 */
+.ai-advice-list-item {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* AI 응답 카드 */
+.ai-advice-card {
+  width: 100%;
+  padding: 24px 26px;
+  border-radius: 18px;
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  box-shadow:
+    0 14px 28px rgba(15, 23, 42, 0.07),
+    0 4px 10px rgba(15, 23, 42, 0.04);
+  text-align: left;
+}
+
+/* 카드 안 문장 묶음 */
+.ai-advice-text-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* AI 응답 문장 스타일 */
+.ai-advice-text {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.75;
+  color: #111827;
+  letter-spacing: -0.02em;
+
+  /* 한글 단어가 한 글자씩 세로로 깨지는 문제 방지 */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* 분석 중 문구 스타일 */
+.ai-loading {
+  margin: 40px 0 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: #6b7280;
+}
+
+/* 기존 버튼 기능은 유지하고 화면상 버튼 디자인만 적용 */
+.ai-analyze-button {
+  width: 100%;
+  height: 64px;
+  margin-top: auto;
+  margin-bottom: 16px;
+  border: 0;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #4c6fff 0%, #3157f4 100%);
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(49, 87, 244, 0.28);
+}
+
+/* 버튼 클릭 시 살짝 눌리는 느낌 */
+.ai-analyze-button:active {
+  transform: translateY(1px);
+}
+
+/* 첫 번째 분석 결과 카드 배경색 */
+.ai-advice-card.card-1 {
+  background: #eef4ff;
+}
+
+/* 두 번째 분석 결과 카드 배경색 */
+.ai-advice-card.card-2 {
+  background: #ecfdf3;
+}
+
+/* 세 번째 분석 결과 카드 배경색 */
+.ai-advice-card.card-3 {
+  background: #fff8e6;
+}
+
+/* ============================= */
+/* 하단 메뉴 */
+/* ============================= */
+
+/* 하단 메뉴를 5개 기준에서 4개 기준으로 변경 */
 .bottom-menu {
   position: absolute;
   left: 0;
@@ -291,13 +674,17 @@ button {
   width: 100%;
   height: 72px;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+
+  /* 메뉴가 4개이므로 4등분 */
+  grid-template-columns: repeat(4, 1fr);
+
   align-items: center;
   background: #ffffff;
   border-top: 1px solid #edf0f5;
   z-index: 10;
 }
 
+/* 하단 메뉴 버튼 */
 .menu-button {
   border: 0;
   background: transparent;
@@ -305,23 +692,553 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+
+  /* 4개 메뉴가 균등하게 중앙 정렬되도록 높이 지정 */
+  height: 100%;
+
   gap: 4px;
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
 }
 
+/* 하단 메뉴 아이콘 */
 .menu-button img {
   width: 24px;
   height: 24px;
   opacity: 0.92;
 }
 
+/* 선택된 메뉴 텍스트 색상 */
 .menu-button.active {
   color: #2864ff;
 }
 
+/* 선택된 메뉴 아이콘 색상 */
 .menu-button.active img {
   filter: invert(39%) sepia(96%) saturate(2405%) hue-rotate(216deg)
     brightness(100%);
+}
+
+/* ============================= */
+/* 입력 화면 */
+/* ============================= */
+
+/* 입력 화면 전체 영역 */
+.input-page {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* 입력 화면 내부 카드 */
+.input-card {
+  width: 100%;
+  max-width: 620px;
+  height: 100%;
+  padding: 0 8px 20px;
+}
+
+/* 입력 카드 상단 제목 + 설정 버튼 영역 */
+.input-card-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+/* 입력 화면 내부 제목 */
+.input-card-header h2 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.03em;
+}
+
+/* 계좌/예산 전환 버튼 */
+.input-setting-button {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  transform: translateY(-50%);
+  border: 0;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #111827;
+  font-size: 24px;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
+}
+
+/* 입력 폼 전체 */
+.input-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 수입/지출 탭 영역 */
+.input-type-tabs {
+  width: 100%;
+  height: 58px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 34px;
+}
+
+/* 수입/지출 버튼 */
+.input-type-button {
+  border: 0;
+  border-radius: 10px;
+  background: #f8fafc;
+  color: #111827;
+  font-size: 17px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* disabled 기본 흐림 효과 제거 */
+.input-type-button:disabled {
+  opacity: 1;
+  cursor: default;
+}
+
+/* 선택된 수입/지출 버튼 */
+.input-type-button.active {
+  border: 2px solid #4c6fff;
+  background: #ffffff;
+  color: #4c6fff;
+}
+
+/* ValueInput form */
+.value-input-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 입력 항목 한 묶음 */
+.input-field-group {
+  margin-bottom: 28px;
+}
+
+/* 입력 라벨 */
+.input-label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 17px;
+  font-weight: 800;
+  color: #111827;
+}
+
+/* 선택 문구 */
+.input-label span {
+  font-size: 15px;
+  font-weight: 700;
+  color: #6b7280;
+}
+
+/* 금액 입력 박스 */
+.input-money-box {
+  height: 58px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  border: 1px solid #dbe3ef;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
+}
+
+/* 카테고리 입력 박스 */
+.input-category-box {
+  height: 58px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #dbe3ef;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
+}
+
+/* 기본 input */
+.input-text {
+  width: 100%;
+  height: 100%;
+  padding: 0 16px;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* input placeholder */
+.input-text::placeholder,
+.input-memo::placeholder {
+  color: #94a3b8;
+}
+
+/* 원 단위 */
+.input-unit {
+  padding-right: 16px;
+  font-size: 15px;
+  font-weight: 800;
+  color: #111827;
+}
+
+/* 날짜 입력 박스 */
+.input-date-box {
+  height: 58px;
+  display: grid;
+  grid-template-columns: 1fr 58px;
+  align-items: center;
+  border: 1px solid #dbe3ef;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
+}
+
+/* 달력 버튼 */
+.input-calendar-button {
+  width: 42px;
+  height: 42px;
+  margin-right: 8px;
+  justify-self: center;
+  align-self: center;
+  border: 1px solid #cfd6ff;
+  border-radius: 12px;
+  background: #f4f6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  box-shadow: 0 4px 10px rgba(99, 102, 241, 0.14);
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* 달력 버튼에 마우스를 올렸을 때 */
+.input-calendar-button:hover {
+  background: #eef1ff;
+  border-color: #7c83ff;
+  box-shadow: 0 6px 14px rgba(99, 102, 241, 0.2);
+}
+
+/* 달력 버튼을 눌렀을 때 */
+.input-calendar-button:active {
+  transform: scale(0.94);
+}
+
+/* 키보드로 버튼에 포커스 되었을 때 */
+.input-calendar-button:focus-visible {
+  outline: 2px solid #6c74ff;
+  outline-offset: 2px;
+}
+
+/* calendar.svg 아이콘 크기 */
+.input-calendar-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+  pointer-events: none;
+}
+
+/* 달력 패널 */
+.input-calendar-panel {
+  margin-top: 12px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
+}
+
+/* 메모 입력 영역 */
+.input-memo {
+  width: 100%;
+  height: 150px;
+  padding: 16px;
+  resize: none;
+  border: 1px solid #dbe3ef;
+  border-radius: 10px;
+  outline: none;
+  background: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
+}
+
+/* 저장 버튼 */
+.input-save-button {
+  width: 100%;
+  height: 62px;
+  margin-top: 4px;
+  border: 0;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #4c6fff 0%, #3157f4 100%);
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(49, 87, 244, 0.24);
+}
+
+/* 저장 버튼 클릭 효과 */
+.input-save-button:active {
+  transform: translateY(1px);
+}
+
+/* ============================= */
+/* 계좌 및 예산 입력 화면 */
+/* ============================= */
+
+/* 계좌 입력 화면 전체 */
+.account-page {
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+  height: calc(100% - 10px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* 계좌 추가 form */
+.account-add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* 입력 항목 묶음 */
+.account-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 입력 라벨 */
+.account-label {
+  font-size: 17px;
+  font-weight: 800;
+  color: #111827;
+}
+
+/* 선택 문구 */
+.account-label span {
+  font-size: 15px;
+  font-weight: 700;
+  color: #6b7280;
+}
+
+/* 계좌 입력 input */
+.account-input {
+  width: 100%;
+  height: 56px;
+  padding: 0 16px;
+  border: 1px solid #dbe3ef;
+  border-radius: 10px;
+  background: #ffffff;
+  outline: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
+}
+
+/* placeholder */
+.account-input::placeholder {
+  color: #94a3b8;
+}
+
+/* input focus */
+.account-input:focus {
+  border-color: #6b72ff;
+  box-shadow:
+    0 0 0 3px rgba(107, 114, 255, 0.1),
+    0 8px 18px rgba(15, 23, 42, 0.04);
+}
+
+/* 초기금액 입력 박스 */
+.account-money-box {
+  height: 56px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  border: 1px solid #dbe3ef;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
+}
+
+/* 초기금액 input */
+.account-money-input {
+  height: 100%;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+/* 원 단위 */
+.account-money-unit {
+  padding-right: 16px;
+  font-size: 15px;
+  font-weight: 800;
+  color: #111827;
+}
+
+/* 계좌 추가 + 버튼 */
+.account-add-button {
+  width: 100%;
+  height: 58px;
+  margin-top: 4px;
+  border: 0;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #6672f6 0%, #4d5be8 100%);
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(49, 87, 244, 0.24);
+}
+
+/* + 버튼 클릭 효과 */
+.account-add-button:active {
+  transform: translateY(1px);
+}
+
+/* 등록된 계좌 리스트 */
+.account-list {
+  margin-top: 22px;
+  padding-right: 6px;
+
+  padding-bottom: 110px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  max-height: 330px;
+  overflow-y: auto;
+}
+
+/* 계좌 리스트 스크롤바 */
+.account-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.account-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.account-list::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.5);
+  border-radius: 999px;
+}
+
+/* 계좌 카드 */
+.account-card {
+  padding: 14px;
+  border: 1px solid #e3e7f3;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
+}
+
+/* 카드 한 줄 */
+.account-card-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  min-height: 50px;
+  align-items: stretch;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* 카드 줄 간격 */
+.account-card-row + .account-card-row {
+  margin-top: 8px;
+}
+
+/* 카드 왼쪽 제목 */
+.account-card-label {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  background: #f6f7fb;
+  color: #111827;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+/* 카드 오른쪽 값 */
+.account-card-value {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0 14px;
+  background: #ffffff;
+  color: #111827;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* 수정 모드 input */
+.account-card-input {
+  width: 100%;
+  height: 100%;
+  padding: 0 14px;
+  border: 1px solid #dbe3ef;
+  border-radius: 8px;
+  outline: none;
+  background: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* 수정/삭제 버튼 묶음 */
+.account-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+/* 수정 버튼 */
+.account-edit-button,
+.account-delete-button {
+  min-width: 58px;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 10px;
+  background: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* 수정 버튼 색상 */
+.account-edit-button {
+  border: 1px solid #cfd6ff;
+  color: #4d5be8;
+}
+
+/* 삭제 버튼 색상 */
+.account-delete-button {
+  border: 1px solid #f2c8c8;
+  color: #ef4444;
 }

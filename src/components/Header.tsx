@@ -2,7 +2,7 @@ import type { ScreenStatus } from "../App";
 
 export default function Header({ screen }: { screen: ScreenStatus }) {
   return (
-    <>
+    <header className="header">
       <h1>
         {screen.isHome
           ? "AI 가계부"
@@ -14,6 +14,6 @@ export default function Header({ screen }: { screen: ScreenStatus }) {
                 ? "통계"
                 : "AI 분석"}
       </h1>
-    </>
+    </header>
   );
 }

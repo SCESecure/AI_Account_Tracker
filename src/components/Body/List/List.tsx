@@ -79,7 +79,8 @@ export default function List({ defaultList }: { defaultList: List[] }) {
   );
 
   return (
-    <>
+    <section className="asset-list-page">
+
       <Align
         tyear={tyear}
         tmonth={tmonth}
@@ -91,7 +92,8 @@ export default function List({ defaultList }: { defaultList: List[] }) {
         dateMinusHandler={dateMinusHandler}
         datePlusHandler={datePlusHandler}
       />
+
       <AllList dateSearched={dateSearched} />
-    </>
+    </section>
   );
 }
