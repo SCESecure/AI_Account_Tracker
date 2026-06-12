@@ -132,8 +132,8 @@ export default function ValueInput({
 
     // 데이터 전처리
     const year = Number(dateValue.slice(0, 4));
-    const month = Number(dateValue.slice(6, 7));
-    const day = Number(dateValue.slice(9, 10));
+    const month = Number(dateValue.slice(5, 7));
+    const day = Number(dateValue.slice(8, dateValue.length));
 
     setListItem((value) => [
       ...value,
@@ -195,6 +195,7 @@ export default function ValueInput({
 
     createItem(priceValue, categoryValue, dateValue);
 
+    alert("추가되었습니다.");
     console.log("내역이 정상 처리되었습니다.");
   };
 

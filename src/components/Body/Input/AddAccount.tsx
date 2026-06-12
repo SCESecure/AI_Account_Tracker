@@ -74,6 +74,7 @@ export default function AddAccount({
 
     AddAccount(bank, accountName, accountNumber, budget);
 
+    alert("처리되었습니다.");
     console.log("계좌가 정상 처리되었습니다.");
   };
 
