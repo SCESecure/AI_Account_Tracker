@@ -66,7 +66,15 @@ VITE_OPENAI_API_KEY=(API 키)
       - `Menu.tsx`
       - `MenuButton.tsx`
 
+## 아이콘
+
 프로그램에 사용된 모든 svg 파일들은 전부 `src/assets/icons` 에 있습니다.
+이러한 아이콘들은 셔터스톡(ShutterStock)의 이미지들을 참고하여 2차적으로 제작하였으며, 참고한 이미지는 아래와 같습니다.
+
+- [Dexterous Hands의 자산 2014208444](https://www.shutterstock.com/ko/image-vector/battery-reminder-robot-icon-illustration-design-2014208444)
+- [putiko의 자산 2605708517](https://www.shutterstock.com/ko/image-vector/household-expenses-icon-set-illustration-material-2605708517)
+
+만일 위 행동이 [셔터스톡(ShutterStock)의 라이선스](https://www.shutterstock.com/ko/license) 에 대하여 부합하지 않은 것이라면, 담당자는 [GitHub의 Issues](https://github.com/SCESecure/AI_Account_Tracker/issues)에 해당 내용에 관하여 달아주시길 바랍니다.
 
 ## 기여자
 
